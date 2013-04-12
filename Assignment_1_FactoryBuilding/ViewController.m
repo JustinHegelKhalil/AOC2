@@ -86,10 +86,11 @@
         NSArray *makeCompatibleArray = [NSArray arrayWithObjects:ingredients count:5];
         [mutableLunchText appendFormat:@"%@ can be made by gathering ", lunchText];
         for (NSString *currentThing in makeCompatibleArray){
+            //this is where I populate the text with the ingredients... I tried putting it in the base class, but there was some syntax problem. 
             if ([currentThing isEqualToString:[makeCompatibleArray lastObject]]){
                 [mutableLunchText appendFormat:@" and %@.", currentThing];
             } else {
-                [mutableLunchText appendFormat:@"%@, ", currentThing];
+                [mutableLunchText appendFormat:@"%@, ", currentThing];// figure out how to call a function within a class up one level from the class in use.
             }
         }
         lunch.text = mutableLunchText;
@@ -168,6 +169,8 @@
     [self.view addSubview:dinner];
     [self.view addSubview:dinner2];
     [self.view addSubview:dinner3];
+    // actually, I think I just figured out how to do my list writing in the base class.
+    // Next step, radical deletion of all this code, slapping it all into the base class and modulating and customizing it with the subclass and the external environmental code.
     
     [super viewDidLoad];
 
