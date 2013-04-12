@@ -19,9 +19,9 @@ typedef enum {
     SQUARE
 } pancakePan;
 
-@property int panType;
+@property float surfaceSize;
 @property int stacks;
 @property int timePerStack;
-@property NSString *moldTypes;
+@property int pancakePan;
 
 @end

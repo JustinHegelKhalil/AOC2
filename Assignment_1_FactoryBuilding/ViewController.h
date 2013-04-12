@@ -18,5 +18,8 @@
     UILabel *lunch2;
     UILabel *lunch3;
     UILabel *dinner;
+    UILabel *dinner2;
+    UILabel *dinner3;
+    
 }
 @end

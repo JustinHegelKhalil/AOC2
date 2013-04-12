@@ -10,4 +10,7 @@
 
 @implementation sandwichRecipe
 
+@synthesize lengthOfLoaf, cheeseType, toasted;
+
+
 @end

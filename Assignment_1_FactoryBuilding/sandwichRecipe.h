@@ -21,7 +21,6 @@ typedef enum {
 
 @property int lengthOfLoaf;
 @property NSString *cheeseType;
-@property bool timePerStack;
-@property NSString *moldTypes;
+@property bool toasted;
 
 @end

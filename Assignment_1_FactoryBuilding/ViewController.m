@@ -119,6 +119,57 @@
     [self.view addSubview:lunch2];
     [self.view addSubview:lunch3];
     
+    pancakeRecipe *pancakeDinnerRecipe = (pancakeRecipe*)[recipeFactory writeNewRecipe:PANCAKERECIPE];
+    [pancakeDinnerRecipe setPancakePan:FLAT];
+    [valentinesCookies setServings:2];
+    dinner = [[UILabel alloc] initWithFrame:(CGRectMake(10.0f, 270.0f, 300.0f, 90.0f))];
+    if (dinner != nil){
+        NSString *pancakeDinnerRecipeInstructions = @"Fry at medium heat.";
+        [pancakeDinnerRecipe setInstructions:pancakeDinnerRecipeInstructions];
+        [pancakeDinnerRecipe setSurfaceSize:3.0];
+        [pancakeDinnerRecipe setStacks:4];
+        [pancakeDinnerRecipe calcCookTimeMinutes];
+        // where labels are created.
+        dinner.backgroundColor = [UIColor whiteColor];
+        NSMutableString *mutableDinnerText = [NSMutableString string];
+        NSString *dinnerText = (@"Pancake Dinner");
+        NSString *ingredients[5] = {@"flour", @"cinnamon", @"sugar", @"baking powder", @"salt"};
+        NSArray *makeCompatibleArray = [NSArray arrayWithObjects:ingredients count:5];
+        [mutableDinnerText appendFormat:@"%@ can be made by combining ", dinnerText];
+        for (NSString *currentThing in makeCompatibleArray){
+            if ([currentThing isEqualToString:[makeCompatibleArray lastObject]]){
+                [mutableDinnerText appendFormat:@" and %@.", currentThing];
+            } else {
+                [mutableDinnerText appendFormat:@"%@, ", currentThing];
+            }
+        }
+        dinner.text = mutableDinnerText;
+        dinner.numberOfLines = 10;
+        dinner.textAlignment = NSTextAlignmentCenter;
+        dinner.textColor = [UIColor blueColor];
+    }
+    dinner2 = [[UILabel alloc] initWithFrame:(CGRectMake(10.0f, 360.0f, 150.0f, 40.0f))];
+    if (dinner2 != nil){
+        dinner2.backgroundColor = [UIColor whiteColor];
+        dinner2.text = [pancakeDinnerRecipe instructions];
+        dinner2.textAlignment = NSTextAlignmentCenter;
+        dinner2.numberOfLines = 2;
+        dinner2.textColor = [UIColor blackColor];
+    }
+    int cookingTimeForPancakes = [pancakeDinnerRecipe calcCookTimeMinutes];
+    dinner3 = [[UILabel alloc] initWithFrame:(CGRectMake(160.0f, 360.0f, 150.0f, 40.0f))];
+    if (dinner3 != nil){
+        dinner3.backgroundColor = [UIColor whiteColor];
+        dinner3.text = [NSString stringWithFormat:@"for %d minutes", cookingTimeForPancakes];
+        dinner3.textAlignment = NSTextAlignmentCenter;
+        dinner3.numberOfLines = 2;
+        dinner3.textColor = [UIColor blackColor];
+    }
+    
+    [self.view addSubview:dinner];
+    [self.view addSubview:dinner2];
+    [self.view addSubview:dinner3];
+    
     [super viewDidLoad];
 
     
