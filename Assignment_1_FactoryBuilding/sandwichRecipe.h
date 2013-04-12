@@ -20,6 +20,7 @@ typedef enum {
 } sandwichBread;
 
 @property int lengthOfLoaf;
+@property int sandwichBread;
 @property NSString *cheeseType;
 @property bool toasted;
 

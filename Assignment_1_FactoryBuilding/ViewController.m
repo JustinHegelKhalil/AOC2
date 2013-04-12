@@ -68,23 +68,23 @@
     [self.view addSubview:breakfast2];
     [self.view addSubview:breakfast3];
     
-    cookieRecipe *valentinesCookies = (cookieRecipe*)[recipeFactory writeNewRecipe:COOKIERECIPE];
-    [valentinesCookies setCookieMold:VALENTINES];
-    [valentinesCookies setServings:2];
+    sandwichRecipe *frenchBreadSandwich = (sandwichRecipe*)[recipeFactory writeNewRecipe:SANDWICHRECIPE];
+    [frenchBreadSandwich setSandwichBread:WHITE];
+    [frenchBreadSandwich setToasted:TRUE];
     lunch = [[UILabel alloc] initWithFrame:(CGRectMake(10.0f, 130.0f, 300.0f, 90.0f))];
     if (breakfast != nil){
-        NSString *valentinesCookiesInstructions = @"Bake at 400 degrees.";
-        [valentinesCookies setInstructions:valentinesCookiesInstructions];
-        NSString *frosting = @"cream cheese ";
-        [valentinesCookies setFrosting:frosting];
-        [valentinesCookies calcCookTimeMinutes];
+        NSString *frenchBreadSandwichInstructions = @"Combine like a boss";
+        [frenchBreadSandwich setInstructions:frenchBreadSandwichInstructions];
+        NSString *cheese = @"cream cheese ";
+        [frenchBreadSandwich setCheeseType:cheese];
+        [frenchBreadSandwich calcCookTimeMinutes];
         // where labels are created.
         lunch.backgroundColor = [UIColor whiteColor];
         NSMutableString *mutableLunchText = [NSMutableString string];
-        NSString *lunchText = (@"Valentines Cookies");
-        NSString *ingredients[5] = {@"flour", @"vanilla", @"sugar", @"eggs", @"red food-coloring"};
+        NSString *lunchText = (@"French Bread Sandwich");
+        NSString *ingredients[5] = {@"cheese", @"bread", @"lettuce", @"mayo", @"tomato slice"};
         NSArray *makeCompatibleArray = [NSArray arrayWithObjects:ingredients count:5];
-        [mutableLunchText appendFormat:@"%@ can be made by combining ", lunchText];
+        [mutableLunchText appendFormat:@"%@ can be made by gathering ", lunchText];
         for (NSString *currentThing in makeCompatibleArray){
             if ([currentThing isEqualToString:[makeCompatibleArray lastObject]]){
                 [mutableLunchText appendFormat:@" and %@.", currentThing];
@@ -100,16 +100,16 @@
     lunch2 = [[UILabel alloc] initWithFrame:(CGRectMake(10.0f, 210.0f, 150.0f, 40.0f))];
     if (lunch2 != nil){
         lunch2.backgroundColor = [UIColor whiteColor];
-        lunch2.text = [valentinesCookies instructions];
+        lunch2.text = [frenchBreadSandwich instructions];
         lunch2.textAlignment = NSTextAlignmentCenter;
         lunch2.numberOfLines = 2;
         lunch2.textColor = [UIColor blackColor];
     }
-    int cookingTimeForVC = [valentinesCookies calcCookTimeMinutes];
-    lunch3 = [[UILabel alloc] initWithFrame:(CGRectMake(180.0f, 210.0f, 150.0f, 40.0f))];
+    int cookingTimeForSandwich = [frenchBreadSandwich calcCookTimeMinutes];
+    lunch3 = [[UILabel alloc] initWithFrame:(CGRectMake(160.0f, 210.0f, 150.0f, 40.0f))];
     if (lunch3 != nil){
         lunch3.backgroundColor = [UIColor whiteColor];
-        lunch3.text = [NSString stringWithFormat:@"for %d minutes", cookingTimeForVC];
+        lunch3.text = [NSString stringWithFormat:@"toast for %d minutes", cookingTimeForSandwich];
         lunch3.textAlignment = NSTextAlignmentCenter;
         lunch3.numberOfLines = 2;
         lunch3.textColor = [UIColor blackColor];
@@ -121,7 +121,6 @@
     
     pancakeRecipe *pancakeDinnerRecipe = (pancakeRecipe*)[recipeFactory writeNewRecipe:PANCAKERECIPE];
     [pancakeDinnerRecipe setPancakePan:FLAT];
-    [valentinesCookies setServings:2];
     dinner = [[UILabel alloc] initWithFrame:(CGRectMake(10.0f, 270.0f, 300.0f, 90.0f))];
     if (dinner != nil){
         NSString *pancakeDinnerRecipeInstructions = @"Fry at medium heat.";
