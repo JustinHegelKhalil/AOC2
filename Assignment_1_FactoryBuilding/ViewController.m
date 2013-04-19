@@ -25,7 +25,7 @@ int quantityVariable = 1;
 
 - (void)viewDidLoad
 {
-    
+    // get all strings I anticipate requiring out of the way so I don't need to worry about them later.
     NSString *pancakesButtonString = @"pancakes";
     NSString *cookiesButtonString = @"cookies";
     NSString *sandwichesButtonString = @"sandwiches";
@@ -33,6 +33,8 @@ int quantityVariable = 1;
     NSString *stepperUp = @"+";
     NSString *stepperDown = @"-";
 
+    //this is just  a test. Using the old code to verify the recipeFactory is still working despite being migrated
+    //through multiple project environments.
     cookieRecipe *starWarsCookies = (cookieRecipe*)[recipeFactory writeNewRecipe:COOKIERECIPE];
     [starWarsCookies setCookieMold:STARWARS];
     [starWarsCookies setServings:4];
@@ -110,6 +112,8 @@ int quantityVariable = 1;
         //int checker = 5;
         int checker = [[settingsSingleton GetInstance] makePancakes:quantityVariable];
         if (checker > quantityVariable){
+            //checking ingredients against requirements.
+            //using singleton's interface.
             pancakeRecipe *pancakesOnTheWay = (pancakeRecipe*)[recipeFactory writeNewRecipe:PANCAKERECIPE];
             [pancakesOnTheWay setPancakePan:ROUNDED];
             [pancakesOnTheWay setStacks:quantityVariable];
