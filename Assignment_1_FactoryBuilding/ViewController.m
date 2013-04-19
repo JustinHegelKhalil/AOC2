@@ -8,194 +8,181 @@
 
 #import "ViewController.h"
 
+#define PANCAKESTAG 1
+#define SANDWICHTAG 2
+#define COOKIESTAG 3
+#define DOWN 4
+#define UP 5
+
+
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
 
+int quantityVariable = 1;
+
 - (void)viewDidLoad
 {
-    //make Star Wars cookie recipe.
+    
+    NSString *pancakesButtonString = @"pancakes";
+    NSString *cookiesButtonString = @"cookies";
+    NSString *sandwichesButtonString = @"sandwiches";
+    NSString *promptText = @"select a food";
+    NSString *stepperUp = @"+";
+    NSString *stepperDown = @"-";
+
     cookieRecipe *starWarsCookies = (cookieRecipe*)[recipeFactory writeNewRecipe:COOKIERECIPE];
     [starWarsCookies setCookieMold:STARWARS];
     [starWarsCookies setServings:4];
-    breakfast = [[UILabel alloc] initWithFrame:(CGRectMake(10.0f, 10.0f, 300.0f, 90.0f))];
-    if (breakfast != nil){
-        NSString *starWarsCookiesInstructions = @"Bake at 375 degrees.";
-        [starWarsCookies setInstructions:starWarsCookiesInstructions];
-        NSString *frosting = @"cream cheese ";
-        [starWarsCookies setFrosting:frosting];
-        [starWarsCookies calcCookTimeMinutes];
-        // where labels are created.
-        breakfast.backgroundColor = [UIColor whiteColor];
-        NSMutableString *mutableBreakfastText = [NSMutableString string];
-        NSString *breakfastText = (@"Star Wars Cookies");
-        NSString *ingredients[5] = {@"flour", @"vanilla", @"sugar", @"eggs", @"salt"};
-        NSArray *makeCompatibleArray = [NSArray arrayWithObjects:ingredients count:5];
-        [mutableBreakfastText appendFormat:@"%@ can be made by combining ", breakfastText];
-        for (NSString *currentThing in makeCompatibleArray){
-            if ([currentThing isEqualToString:[makeCompatibleArray lastObject]]){
-                [mutableBreakfastText appendFormat:@" and %@.", currentThing];
-            } else {
-                [mutableBreakfastText appendFormat:@"%@, ", currentThing]; 
-            }
-        }
-        breakfast.text = mutableBreakfastText;
-        breakfast.numberOfLines = 10;
-        breakfast.textAlignment = NSTextAlignmentCenter;
-        breakfast.textColor = [UIColor blueColor];
-    }
-    breakfast2 = [[UILabel alloc] initWithFrame:(CGRectMake(10.0f, 90.0f, 150.0f, 40.0f))];
-    if (breakfast2 != nil){
-        breakfast2.backgroundColor = [UIColor whiteColor];
-        breakfast2.text = [starWarsCookies instructions];
-        breakfast2.textAlignment = NSTextAlignmentCenter;
-        breakfast2.numberOfLines = 2;
-        breakfast2.textColor = [UIColor blackColor];
-    }
-    int cookingTimeForSWC = [starWarsCookies calcCookTimeMinutes];
-    breakfast3 = [[UILabel alloc] initWithFrame:(CGRectMake(160.0f, 90.0f, 150.0f, 40.0f))];
-    if (breakfast3 != nil){
-        breakfast3.backgroundColor = [UIColor whiteColor];
-        breakfast3.text = [NSString stringWithFormat:@"for %d minutes", cookingTimeForSWC];
-        breakfast3.textAlignment = NSTextAlignmentCenter;
-        breakfast3.numberOfLines = 2;
-        breakfast3.textColor = [UIColor blackColor];
-    }
     
-    [self.view addSubview:breakfast];
-    [self.view addSubview:breakfast2];
-    [self.view addSubview:breakfast3];
-    
-    sandwichRecipe *frenchBreadSandwich = (sandwichRecipe*)[recipeFactory writeNewRecipe:SANDWICHRECIPE];
-    [frenchBreadSandwich setSandwichBread:WHITE];
-    [frenchBreadSandwich setToasted:TRUE];
-    lunch = [[UILabel alloc] initWithFrame:(CGRectMake(10.0f, 130.0f, 300.0f, 90.0f))];
-    if (breakfast != nil){
-        NSString *frenchBreadSandwichInstructions = @"Combine like a boss";
-        [frenchBreadSandwich setInstructions:frenchBreadSandwichInstructions];
-        NSString *cheese = @"cream cheese ";
-        [frenchBreadSandwich setCheeseType:cheese];
-        [frenchBreadSandwich calcCookTimeMinutes];
-        // where labels are created.
-        lunch.backgroundColor = [UIColor whiteColor];
-        NSMutableString *mutableLunchText = [NSMutableString string];
-        NSString *lunchText = (@"French Bread Sandwich");
-        NSString *ingredients[5] = {@"cheese", @"bread", @"lettuce", @"mayo", @"tomato slice"};
-        NSArray *makeCompatibleArray = [NSArray arrayWithObjects:ingredients count:5];
-        [mutableLunchText appendFormat:@"%@ can be made by gathering ", lunchText];
-        for (NSString *currentThing in makeCompatibleArray){
-            //this is where I populate the text with the ingredients... I tried putting it in the base class, but there was some syntax problem. 
-            if ([currentThing isEqualToString:[makeCompatibleArray lastObject]]){
-                [mutableLunchText appendFormat:@" and %@.", currentThing];
-            } else {
-                [mutableLunchText appendFormat:@"%@, ", currentThing];// figure out how to call a function within a class up one level from the class in use.
-            }
-        }
-        lunch.text = mutableLunchText;
-        lunch.numberOfLines = 10;
-        lunch.textAlignment = NSTextAlignmentCenter;
-        lunch.textColor = [UIColor redColor];
+    promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 20.0f, 250.0f, 20.0f)];
+    promptLabel.text = promptText;
+    if (promptLabel != nil){
+        [self.view addSubview:promptLabel];
     }
-    lunch2 = [[UILabel alloc] initWithFrame:(CGRectMake(10.0f, 210.0f, 150.0f, 40.0f))];
-    if (lunch2 != nil){
-        lunch2.backgroundColor = [UIColor whiteColor];
-        lunch2.text = [frenchBreadSandwich instructions];
-        lunch2.textAlignment = NSTextAlignmentCenter;
-        lunch2.numberOfLines = 2;
-        lunch2.textColor = [UIColor blackColor];
+    responseField = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 50.0f, 250.0f, 20.0f)];
+    if (responseField != nil){
+        [self.view addSubview:responseField];
     }
-    int cookingTimeForSandwich = [frenchBreadSandwich calcCookTimeMinutes];
-    lunch3 = [[UILabel alloc] initWithFrame:(CGRectMake(160.0f, 210.0f, 150.0f, 40.0f))];
-    if (lunch3 != nil){
-        lunch3.backgroundColor = [UIColor whiteColor];
-        lunch3.text = [NSString stringWithFormat:@"toast for %d minutes", cookingTimeForSandwich];
-        lunch3.textAlignment = NSTextAlignmentCenter;
-        lunch3.numberOfLines = 2;
-        lunch3.textColor = [UIColor blackColor];
+    quantityStepperDown = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    if (quantityStepperDown != nil){
+        quantityStepperDown.frame = CGRectMake(20.0f, 70.0f, 30.0f, 30.0f);
+        quantityStepperDown.tag = DOWN;
+        [quantityStepperDown setTitle:stepperDown forState:UIControlStateNormal];
+        [quantityStepperDown addTarget:self action:@selector(tappaTappa:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:quantityStepperDown];
     }
-    
-    [self.view addSubview:lunch];
-    [self.view addSubview:lunch2];
-    [self.view addSubview:lunch3];
-    
-    pancakeRecipe *pancakeDinnerRecipe = (pancakeRecipe*)[recipeFactory writeNewRecipe:PANCAKERECIPE];
-    [pancakeDinnerRecipe setPancakePan:FLAT];
-    dinner = [[UILabel alloc] initWithFrame:(CGRectMake(10.0f, 270.0f, 300.0f, 90.0f))];
-    if (dinner != nil){
-        NSString *pancakeDinnerRecipeInstructions = @"Fry at medium heat.";
-        [pancakeDinnerRecipe setInstructions:pancakeDinnerRecipeInstructions];
-        [pancakeDinnerRecipe setSurfaceSize:3.0];
-        [pancakeDinnerRecipe setStacks:4];
-        [pancakeDinnerRecipe calcCookTimeMinutes];
-        // where labels are created.
-        dinner.backgroundColor = [UIColor whiteColor];
-        NSMutableString *mutableDinnerText = [NSMutableString string];
-        NSString *dinnerText = (@"Pancake Dinner");
-        NSString *ingredients[5] = {@"flour", @"cinnamon", @"sugar", @"baking powder", @"salt"};
-        NSArray *makeCompatibleArray = [NSArray arrayWithObjects:ingredients count:5];
-        [mutableDinnerText appendFormat:@"%@ can be made by combining ", dinnerText];
-        for (NSString *currentThing in makeCompatibleArray){
-            if ([currentThing isEqualToString:[makeCompatibleArray lastObject]]){
-                [mutableDinnerText appendFormat:@" and %@.", currentThing];
-            } else {
-                [mutableDinnerText appendFormat:@"%@, ", currentThing];
-            }
-        }
-        dinner.text = mutableDinnerText;
-        dinner.numberOfLines = 10;
-        dinner.textAlignment = NSTextAlignmentCenter;
-        dinner.textColor = [UIColor blueColor];
+    quantityStepperUp = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    if (quantityStepperUp != nil){
+        quantityStepperUp.frame = CGRectMake(50.0f, 70.0f, 30.0f, 30.0f);
+        quantityStepperUp.tag = UP;
+        [quantityStepperUp setTitle:stepperUp forState:UIControlStateNormal];
+        [quantityStepperUp addTarget:self action:@selector(tappaTappa:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:quantityStepperUp];
     }
-    dinner2 = [[UILabel alloc] initWithFrame:(CGRectMake(10.0f, 360.0f, 150.0f, 40.0f))];
-    if (dinner2 != nil){
-        dinner2.backgroundColor = [UIColor whiteColor];
-        dinner2.text = [pancakeDinnerRecipe instructions];
-        dinner2.textAlignment = NSTextAlignmentCenter;
-        dinner2.numberOfLines = 2;
-        dinner2.textColor = [UIColor blackColor];
+    stepperLabel = [[UILabel alloc] initWithFrame:CGRectMake(80.0f, 70.0f, 30.0f, 30.0f)];
+    if (stepperLabel != nil){
+        NSString *displayedStepperValue = [NSString stringWithFormat:@"%d", quantityVariable];
+        stepperLabel.text = displayedStepperValue;
+        stepperLabel.backgroundColor = [UIColor blackColor];
+        stepperLabel.textColor = [UIColor whiteColor];
+        [self.view addSubview:stepperLabel];
     }
-    int cookingTimeForPancakes = [pancakeDinnerRecipe calcCookTimeMinutes];
-    dinner3 = [[UILabel alloc] initWithFrame:(CGRectMake(160.0f, 360.0f, 150.0f, 40.0f))];
-    if (dinner3 != nil){
-        dinner3.backgroundColor = [UIColor whiteColor];
-        dinner3.text = [NSString stringWithFormat:@"for %d minutes", cookingTimeForPancakes];
-        dinner3.textAlignment = NSTextAlignmentCenter;
-        dinner3.numberOfLines = 2;
-        dinner3.textColor = [UIColor blackColor];
+    pancakesButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    if (pancakesButton != nil){
+        pancakesButton.frame = CGRectMake(10.0f, 200.0f, 100.0f, 30.0f);
+        pancakesButton.tag = PANCAKESTAG;
+        [pancakesButton setTitle:pancakesButtonString forState:UIControlStateNormal];
+        [pancakesButton addTarget:self action:@selector(tappaTappa:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:pancakesButton];
     }
-    
-    [self.view addSubview:dinner];
-    [self.view addSubview:dinner2];
-    [self.view addSubview:dinner3];
-    // actually, I think I just figured out how to do my list writing in the base class.
-    // Next step, radical deletion of all this code, slapping it all into the base class and modulating and customizing it with the subclass and the external environmental code.
-    
+    sandwichesButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    if (sandwichesButton != nil){
+        sandwichesButton.frame = CGRectMake(10.0f, 250.0f, 100.0f, 30.0f);
+        sandwichesButton.tag = SANDWICHTAG;
+        [sandwichesButton setTitle:sandwichesButtonString forState:UIControlStateNormal];
+        [sandwichesButton addTarget:self action:@selector(tappaTappa:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:sandwichesButton];
+    }
+    cookiesButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    if (cookiesButton != nil){
+        cookiesButton.frame = CGRectMake(10.0f, 300.0f, 100.0f, 30.0f);
+        cookiesButton.tag = COOKIESTAG;
+        [cookiesButton setTitle:cookiesButtonString forState:UIControlStateNormal];
+        [cookiesButton addTarget:self action:@selector(tappaTappa:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:cookiesButton];
+    }
+    NSString *defaultPromptText = @"Instructions display here";
+    responseField.text = defaultPromptText;
     [super viewDidLoad];
-
-    
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    
+    UITapGestureRecognizer* tapHere = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    [self.view addGestureRecognizer:tapHere];
+    
 }
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-
-       dinner = [[UILabel alloc] initWithFrame:(CGRectMake(200.0, 200.0f, 150.0f, 20.0f))];
-    if (dinner != nil){
-        dinner.backgroundColor = [UIColor blueColor];
-        dinner.text = @"Joseph Heller";
-        dinner.textAlignment = NSTextAlignmentLeft;
-        dinner.textColor = [UIColor greenColor];
+-(void)tappaTappa:(UIButton*)button{
+    if (button.tag == PANCAKESTAG){
+        NSString *pancakesButtonPressed = [NSString stringWithFormat:@"To make pancake(s)"];
+        //int checker = 5;
+        int checker = [[settingsSingleton GetInstance] makePancakes:quantityVariable];
+        if (checker > quantityVariable){
+            pancakeRecipe *pancakesOnTheWay = (pancakeRecipe*)[recipeFactory writeNewRecipe:PANCAKERECIPE];
+            [pancakesOnTheWay setPancakePan:ROUNDED];
+            [pancakesOnTheWay setStacks:quantityVariable];
+            promptLabel.text = pancakesButtonPressed;
+            int cookTimeDurationInt = [pancakesOnTheWay calcCookTimeMinutes];
+            promptLabel.text = [NSString stringWithFormat:@"fry batter for %d minutes", cookTimeDurationInt];
+            NSLog(@"%d", checker);
+        } else if (checker < quantityVariable){
+            pancakeRecipe *pancakesOnTheWay = (pancakeRecipe*)[recipeFactory writeNewRecipe:PANCAKERECIPE];
+            [pancakesOnTheWay setPancakePan:ROUNDED];
+            [pancakesOnTheWay setStacks:quantityVariable];
+            promptLabel.text = pancakesButtonPressed;
+            int cookTimeDurationInt = [pancakesOnTheWay calcCookTimeMinutes];
+            promptLabel.text = [NSString stringWithFormat:@"fry batter for %d minutes", cookTimeDurationInt];
+            NSLog(@"%d", checker);
+            self.view.backgroundColor = [UIColor blackColor];
+            [self.view addSubview:promptLabel];
+        } 
+    } else if (button.tag == SANDWICHTAG){
+        NSString *sandwichButtonPressed = @"To make these sandwich(es)";
+        int checker = [[settingsSingleton GetInstance] makeSandwiches:quantityVariable];
+        if (checker > quantityVariable){
+            sandwichRecipe *sandwichesOnTheWay = (sandwichRecipe*)[recipeFactory writeNewRecipe:SANDWICHRECIPE];
+            [sandwichesOnTheWay setSandwichBread:FRENCH];
+            [sandwichesOnTheWay setLengthOfLoaf:quantityVariable];
+            promptLabel.text = sandwichButtonPressed;
+            int cookTimeDurationInt = [sandwichesOnTheWay calcCookTimeMinutes];
+            promptLabel.text = [NSString stringWithFormat:@"toast for %d minutes", cookTimeDurationInt];
+            NSLog(@"%d", checker);
+        } else if (checker == quantityVariable){
+            sandwichRecipe *sandwichesOnTheWay = (sandwichRecipe*)[recipeFactory writeNewRecipe:SANDWICHRECIPE];
+            [sandwichesOnTheWay setSandwichBread:FRENCH];
+            [sandwichesOnTheWay setLengthOfLoaf:quantityVariable];
+            promptLabel.text = sandwichButtonPressed;
+            int cookTimeDurationInt = [sandwichesOnTheWay calcCookTimeMinutes];
+            promptLabel.text = [NSString stringWithFormat:@"toast for %d minutes", cookTimeDurationInt];
+            NSLog(@"%d", checker);
+            self.view.backgroundColor = [UIColor blackColor];
+            [self.view addSubview:promptLabel];
+        } else {
+            promptLabel.text = @"You don't have the ingredients for that";
+        }
+    } else if (button.tag == COOKIESTAG){
+        NSString *cookiesButtonPressed = @"To make cookie(s)";
+        cookieRecipe *starWarsCookies = (cookieRecipe*)[recipeFactory writeNewRecipe:COOKIERECIPE];
+        [starWarsCookies setCookieMold:STARWARS];
+        [starWarsCookies setServings:quantityVariable];
+        promptLabel.text = cookiesButtonPressed;
+        int cookTimeDurationInt = [starWarsCookies calcCookTimeMinutes];
+        //NSString *cookTimeDuration = [@"%d", cookTimeDurationInt];
+        responseField.text = [NSString stringWithFormat:@"bake for %d minutes", cookTimeDurationInt]; 
+        self.view.backgroundColor = [UIColor grayColor];
+        [self.view addSubview:promptLabel];
+    } else if ((button.tag == DOWN) && (quantityVariable > 0)){
+        quantityVariable = (quantityVariable -= 1);
+        NSString *displayedStepperValue = [NSString stringWithFormat:@"%d", quantityVariable];
+        stepperLabel.text = displayedStepperValue;
+        [self.view addSubview:stepperLabel];
+    } else if ((button.tag == UP) && (quantityVariable < 20)){
+        quantityVariable = (quantityVariable += 1);
+        NSString *displayedStepperValue = [NSString stringWithFormat:@"%d", quantityVariable];
+        stepperLabel.text = displayedStepperValue;
+        [self.view addSubview:stepperLabel];
     }
-   
-    //[self.view addSubview:lunch];
-    //[self.view addSubview:dinner];
-    
-    
-    
 }
+
+
+
+-(void)hideKeyboard{
+    [self.view endEditing:YES];
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -203,3 +190,4 @@
 }
 
 @end
+

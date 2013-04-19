@@ -10,6 +10,8 @@
 
 @implementation recipeFactory
 
+int pancakeIngredients = 10;
+
 +(baseRecipe *)writeNewRecipe: (int)recipeType;
 {
     if (recipeType == COOKIERECIPE) {

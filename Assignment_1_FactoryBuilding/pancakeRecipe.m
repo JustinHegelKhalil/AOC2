@@ -17,9 +17,10 @@
     self = [super init];
     if (self != nil)
     {
-        [self setCookTimeMinutes:0];
-        [self setStacks:0];
-        [self setTimePerStack:0];
+        [self setSurfaceSize:1];
+        [self setCookTimeMinutes:1];
+        [self setStacks:1];
+        [self setTimePerStack:1];
         [self setPancakePan:FLAT];
         NSLog(@"You straight up made some pancakes, son!");
     }

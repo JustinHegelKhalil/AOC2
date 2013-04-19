@@ -8,18 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "recipeFactory.h"
+#import "settingsSingleton.h"
 
 @interface ViewController : UIViewController
 {
-    UILabel *breakfast;
-    UILabel *breakfast2;
-    UILabel *breakfast3;
-    UILabel *lunch;
-    UILabel *lunch2;
-    UILabel *lunch3;
-    UILabel *dinner;
-    UILabel *dinner2;
-    UILabel *dinner3;
+    UILabel *promptLabel;
+    UILabel *responseField;
+    UIButton *quantityStepperUp;
+    UIButton *quantityStepperDown;
+    UILabel *stepperLabel;
+    UIButton *pancakesButton;
+    UIButton *cookiesButton;
+    UIButton *sandwichesButton;
     
 }
+
+
+
 @end

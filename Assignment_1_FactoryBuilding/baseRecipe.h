@@ -13,6 +13,8 @@
     int recipeEnum;
 }
 
+
+
 typedef enum {
     PANCAKERECIPE,
     COOKIERECIPE,
