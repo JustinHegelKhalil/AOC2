@@ -1,20 +1,20 @@
 //
 //  ViewController.m
-//  Assignment_1_FactoryBuilding
+//  singletonProject
 //
-//  Created by Justin Khalil on 4/11/13.
+//  Created by Justin Khalil on 4/18/13.
 //  Copyright (c) 2013 Justin Khalil. All rights reserved.
 //
 
 #import "ViewController.h"
+
+
 
 #define PANCAKESTAG 1
 #define SANDWICHTAG 2
 #define COOKIESTAG 3
 #define DOWN 4
 #define UP 5
-#define SWAP 6
-
 
 @interface ViewController ()
 
@@ -26,20 +26,16 @@ int quantityVariable = 1;
 
 - (void)viewDidLoad
 {
-    // get all strings I anticipate requiring out of the way so I don't need to worry about them later.
+    
+    [[settingsSingleton GetInstance] doSomething];
     NSString *pancakesButtonString = @"pancakes";
     NSString *cookiesButtonString = @"cookies";
     NSString *sandwichesButtonString = @"sandwiches";
     NSString *promptText = @"select a food";
     NSString *stepperUp = @"+";
     NSString *stepperDown = @"-";
+    //int timeSum = [[pancakeRecipe init] calcCookTimeMinutes];
 
-    //this is just  a test. Using the old code to verify the recipeFactory is still working despite being migrated
-    //through multiple project environments.
-    cookieRecipe *starWarsCookies = (cookieRecipe*)[recipeFactory writeNewRecipe:COOKIERECIPE];
-    [starWarsCookies setCookieMold:STARWARS];
-    [starWarsCookies setServings:4];
-    
     promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 20.0f, 250.0f, 20.0f)];
     promptLabel.text = promptText;
     if (promptLabel != nil){
@@ -97,100 +93,43 @@ int quantityVariable = 1;
         [cookiesButton addTarget:self action:@selector(tappaTappa:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:cookiesButton];
     }
-    swapButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    if (swapButton != nil){
-        swapButton.frame = CGRectMake(200.0f, 300.0f, 100.0f, 30.0f);
-        swapButton.tag = SWAP;
-        [swapButton setTitle:@"SWAP" forState:UIControlStateNormal];
-        [swapButton addTarget:self action:@selector(tappaTappa:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:swapButton];
-    }
-    
     NSString *defaultPromptText = @"Instructions display here";
     responseField.text = defaultPromptText;
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    
+
+
     UITapGestureRecognizer* tapHere = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.view addGestureRecognizer:tapHere];
     
 }
 -(void)tappaTappa:(UIButton*)button{
     if (button.tag == PANCAKESTAG){
-        NSString *pancakesButtonPressed = [NSString stringWithFormat:@"To make pancake(s)"];
-        //int checker = 5;
-        int checker = [[settingsSingleton GetInstance] makePancakes:quantityVariable];
-        if (checker > quantityVariable){
-            //checking ingredients against requirements.
-            //using singleton's interface.
-            pancakeRecipe *pancakesOnTheWay = (pancakeRecipe*)[recipeFactory writeNewRecipe:PANCAKERECIPE];
-            [pancakesOnTheWay setPancakePan:ROUNDED];
-            [pancakesOnTheWay setStacks:quantityVariable];
-            promptLabel.text = pancakesButtonPressed;
-            int cookTimeDurationInt = [pancakesOnTheWay calcCookTimeMinutes];
-            promptLabel.text = [NSString stringWithFormat:@"fry batter for %d minutes", cookTimeDurationInt];
-            NSLog(@"%d", checker);
-        } else if (checker < quantityVariable){
-            pancakeRecipe *pancakesOnTheWay = (pancakeRecipe*)[recipeFactory writeNewRecipe:PANCAKERECIPE];
-            [pancakesOnTheWay setPancakePan:ROUNDED];
-            [pancakesOnTheWay setStacks:quantityVariable];
-            promptLabel.text = pancakesButtonPressed;
-            int cookTimeDurationInt = [pancakesOnTheWay calcCookTimeMinutes];
-            promptLabel.text = [NSString stringWithFormat:@"fry batter for %d minutes", cookTimeDurationInt];
-            NSLog(@"%d", checker);
-            self.view.backgroundColor = [UIColor blackColor];
-            [self.view addSubview:promptLabel];
-        } 
+        NSString *pancakesButtonPressed = @"To make pancakes";
+        promptLabel.text = pancakesButtonPressed;
+        self.view.backgroundColor = [UIColor blackColor];
+        [self.view addSubview:promptLabel];  
     } else if (button.tag == SANDWICHTAG){
-        NSString *sandwichButtonPressed = @"To make these sandwich(es)";
-        int checker = [[settingsSingleton GetInstance] makeSandwiches:quantityVariable];
-        if (checker > quantityVariable){
-            sandwichRecipe *sandwichesOnTheWay = (sandwichRecipe*)[recipeFactory writeNewRecipe:SANDWICHRECIPE];
-            [sandwichesOnTheWay setSandwichBread:FRENCH];
-            [sandwichesOnTheWay setLengthOfLoaf:quantityVariable];
-            promptLabel.text = sandwichButtonPressed;
-            int cookTimeDurationInt = [sandwichesOnTheWay calcCookTimeMinutes];
-            promptLabel.text = [NSString stringWithFormat:@"toast for %d minutes", cookTimeDurationInt];
-            NSLog(@"%d", checker);
-        } else if (checker == quantityVariable){
-            sandwichRecipe *sandwichesOnTheWay = (sandwichRecipe*)[recipeFactory writeNewRecipe:SANDWICHRECIPE];
-            [sandwichesOnTheWay setSandwichBread:FRENCH];
-            [sandwichesOnTheWay setLengthOfLoaf:quantityVariable];
-            promptLabel.text = sandwichButtonPressed;
-            int cookTimeDurationInt = [sandwichesOnTheWay calcCookTimeMinutes];
-            promptLabel.text = [NSString stringWithFormat:@"toast for %d minutes", cookTimeDurationInt];
-            NSLog(@"%d", checker);
-            self.view.backgroundColor = [UIColor blackColor];
-            [self.view addSubview:promptLabel];
-        } else {
-            promptLabel.text = @"You don't have the ingredients for that";
-        }
+        NSString *sandwichButtonPressed = @"To make sandwiches";
+        promptLabel.text = sandwichButtonPressed;
+        self.view.backgroundColor = [UIColor brownColor];
+        [self.view addSubview:promptLabel];  
     } else if (button.tag == COOKIESTAG){
-        NSString *cookiesButtonPressed = @"To make cookie(s)";
-        cookieRecipe *starWarsCookies = (cookieRecipe*)[recipeFactory writeNewRecipe:COOKIERECIPE];
-        [starWarsCookies setCookieMold:STARWARS];
-        [starWarsCookies setServings:quantityVariable];
+        NSString *cookiesButtonPressed = @"To make cookies";
         promptLabel.text = cookiesButtonPressed;
-        int cookTimeDurationInt = [starWarsCookies calcCookTimeMinutes];
-        //NSString *cookTimeDuration = [@"%d", cookTimeDurationInt];
-        responseField.text = [NSString stringWithFormat:@"bake for %d minutes", cookTimeDurationInt]; 
         self.view.backgroundColor = [UIColor grayColor];
-        [self.view addSubview:promptLabel];
+        [self.view addSubview:promptLabel];  
     } else if ((button.tag == DOWN) && (quantityVariable > 0)){
         quantityVariable = (quantityVariable -= 1);
         NSString *displayedStepperValue = [NSString stringWithFormat:@"%d", quantityVariable];
         stepperLabel.text = displayedStepperValue;
-        [self.view addSubview:stepperLabel];
-    } else if ((button.tag == UP) && (quantityVariable < 20)){
+        [self.view addSubview:stepperLabel]; 
+    } else if ((button.tag == UP) && (quantityVariable < 10)){
         quantityVariable = (quantityVariable += 1);
         NSString *displayedStepperValue = [NSString stringWithFormat:@"%d", quantityVariable];
         stepperLabel.text = displayedStepperValue;
-        [self.view addSubview:stepperLabel];
-    } else if (button.tag == SWAP){
-        
-    }
-
+        [self.view addSubview:stepperLabel]; 
+        }
 }
 
 
@@ -207,4 +146,3 @@ int quantityVariable = 1;
 }
 
 @end
-

@@ -29,9 +29,9 @@
 		AE93F975171736C500BEFAD6 /* pancakeRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = AE93F974171736C500BEFAD6 /* pancakeRecipe.m */; };
 		AE93F9801717798C00BEFAD6 /* sandwichRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = AE93F97F1717798C00BEFAD6 /* sandwichRecipe.m */; };
 		AED508F317207780006475EC /* calculatorSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = AED508F217207780006475EC /* calculatorSingleton.m */; };
-		AED509511720D33F006475EC /* settingsSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = AED509501720D33F006475EC /* settingsSingleton.m */; };
-		AED509531720E2AB006475EC /* settingsSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = AED509501720D33F006475EC /* settingsSingleton.m */; };
-		AED509541720E314006475EC /* settingsSingleton.h in Sources */ = {isa = PBXBuildFile; fileRef = AED5094F1720D33E006475EC /* settingsSingleton.h */; };
+		AED509571720EE57006475EC /* secondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AED509561720EE57006475EC /* secondViewController.m */; };
+		AED5095A1725FAE1006475EC /* settingsSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = AED509591725FAE1006475EC /* settingsSingleton.m */; };
+		AED5095B1725FAE1006475EC /* settingsSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = AED509591725FAE1006475EC /* settingsSingleton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,8 +79,10 @@
 		AE93F97F1717798C00BEFAD6 /* sandwichRecipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sandwichRecipe.m; sourceTree = "<group>"; };
 		AED508F117207780006475EC /* calculatorSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = calculatorSingleton.h; sourceTree = "<group>"; };
 		AED508F217207780006475EC /* calculatorSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = calculatorSingleton.m; sourceTree = "<group>"; };
-		AED5094F1720D33E006475EC /* settingsSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = settingsSingleton.h; path = ../../singletonProject/singletonProject/settingsSingleton.h; sourceTree = "<group>"; };
-		AED509501720D33F006475EC /* settingsSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = settingsSingleton.m; path = ../../singletonProject/singletonProject/settingsSingleton.m; sourceTree = "<group>"; };
+		AED509551720EE56006475EC /* secondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = secondViewController.h; sourceTree = "<group>"; };
+		AED509561720EE57006475EC /* secondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = secondViewController.m; sourceTree = "<group>"; };
+		AED509581725FAE0006475EC /* settingsSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingsSingleton.h; sourceTree = "<group>"; };
+		AED509591725FAE1006475EC /* settingsSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingsSingleton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,8 @@
 				AE93F93F1717356F00BEFAD6 /* AppDelegate.m */,
 				AE93F9471717356F00BEFAD6 /* MainStoryboard.storyboard */,
 				AE93F94A1717356F00BEFAD6 /* ViewController.h */,
+				AED509551720EE56006475EC /* secondViewController.h */,
+				AED509561720EE57006475EC /* secondViewController.m */,
 				AE93F94B1717356F00BEFAD6 /* ViewController.m */,
 				AE93F9361717356E00BEFAD6 /* Supporting Files */,
 			);
@@ -162,11 +166,11 @@
 				AE93F97F1717798C00BEFAD6 /* sandwichRecipe.m */,
 				AED508F117207780006475EC /* calculatorSingleton.h */,
 				AED508F217207780006475EC /* calculatorSingleton.m */,
+				AED509581725FAE0006475EC /* settingsSingleton.h */,
+				AED509591725FAE1006475EC /* settingsSingleton.m */,
 				AE93F96E1717364100BEFAD6 /* baseRecipe.m */,
 				AE93F9371717356E00BEFAD6 /* Assignment_1_FactoryBuilding-Info.plist */,
 				AE93F9381717356E00BEFAD6 /* InfoPlist.strings */,
-				AED5094F1720D33E006475EC /* settingsSingleton.h */,
-				AED509501720D33F006475EC /* settingsSingleton.m */,
 				AE93F93B1717356E00BEFAD6 /* main.m */,
 				AE93F93D1717356F00BEFAD6 /* Assignment_1_FactoryBuilding-Prefix.pch */,
 				AE93F96A171735F500BEFAD6 /* recipeFactory.h */,
@@ -307,8 +311,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AED509541720E314006475EC /* settingsSingleton.h in Sources */,
-				AED509531720E2AB006475EC /* settingsSingleton.m in Sources */,
 				AE93F93C1717356E00BEFAD6 /* main.m in Sources */,
 				AE93F9401717356F00BEFAD6 /* AppDelegate.m in Sources */,
 				AE93F94C1717356F00BEFAD6 /* ViewController.m in Sources */,
@@ -318,6 +320,8 @@
 				AE93F975171736C500BEFAD6 /* pancakeRecipe.m in Sources */,
 				AE93F9801717798C00BEFAD6 /* sandwichRecipe.m in Sources */,
 				AED508F317207780006475EC /* calculatorSingleton.m in Sources */,
+				AED509571720EE57006475EC /* secondViewController.m in Sources */,
+				AED5095A1725FAE1006475EC /* settingsSingleton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE93F9611717357000BEFAD6 /* Assignment_1_FactoryBuildingTests.m in Sources */,
-				AED509511720D33F006475EC /* settingsSingleton.m in Sources */,
+				AED5095B1725FAE1006475EC /* settingsSingleton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

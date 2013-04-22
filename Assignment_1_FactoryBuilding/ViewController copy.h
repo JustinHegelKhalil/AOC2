@@ -1,15 +1,14 @@
 //
 //  ViewController.h
-//  Assignment_1_FactoryBuilding
+//  singletonProject
 //
-//  Created by Justin Khalil on 4/11/13.
+//  Created by Justin Khalil on 4/18/13.
 //  Copyright (c) 2013 Justin Khalil. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "recipeFactory.h"
 #import "settingsSingleton.h"
-#import "secondViewController.h"
 
 @interface ViewController : UIViewController
 {
@@ -21,7 +20,7 @@
     UIButton *pancakesButton;
     UIButton *cookiesButton;
     UIButton *sandwichesButton;
-    UIButton *swapButton;
+    
 }
 
 
