@@ -1,22 +1,24 @@
 //
-//  AddEventScreenViewController.m
-//  GUI App
+//  ViewController2.m
+//  data passing
 //
-//  Created by Justin Khalil on 4/24/13.
+//  Created by Justin Khalil on 4/25/13.
 //  Copyright (c) 2013 Justin Khalil. All rights reserved.
 //
 
-#import "AddEventScreenViewController.h"
+#import "ViewController2.h"
+#import "ViewController.h"
 #define BACKBUTTONTAG 0
 #define CLOSEKEYBOARDBUTTONTAG 1
 #define SAVEBUTTONTAG 2
 
-@interface AddEventScreenViewController ()
+@interface ViewController2 ()
 
 @end
 
+@implementation ViewController2
 
-@implementation AddEventScreenViewController
+@synthesize eventTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,14 +28,13 @@
     }
     return self;
 }
-- (IBAction)textFieldThing:(UITextField *)sender {
-}
 
 - (void)viewDidLoad
 {
-    //GET DATE OBJECT
-    //NSDate *dateThing = [NSDate date];
-   // self.view.backgroundColor = [UIColor grayColor];
+    
+    
+    
+    ///// MASSIVE COPY AND PASTE FROM PREVIOUS VERSION
     UITapGestureRecognizer* tapHere = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.view addGestureRecognizer:tapHere];
     NSString *backButtonString = @"back";
@@ -51,7 +52,7 @@
         saveButton.frame = CGRectMake(220.0f, 155.0f, 90.0f, 50.0f);
         saveButton.tag = SAVEBUTTONTAG;
         [saveButton setTitle:saveButtonString forState:UIControlStateNormal];
-        [saveButton addTarget:self action:@selector(tappaTappa:) forControlEvents:UIControlEventTouchUpInside];
+        [saveButton addTarget:self action:@selector(appendAndPassToVC1:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:saveButton];
     }
     NSString *closeKeyboardButtonString = @"Hide Keyboard";
@@ -79,35 +80,50 @@
         setTimeAndDate.textColor = [UIColor whiteColor];
         [self.view addSubview:setTimeAndDate];
     }
-    //UITextField *eventTextField;
 
+    ///// MASSIVE COPY AND PASTE FROM PREVIOUS VERSION OVER
+    secretLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 10.0f, 10.0f, 10.0f)];
+    secretLabel.text = self.stringFromTextField1;
+    
+    CGRect textFieldFrame = CGRectMake(20.0f, 100.0f, 280.0f, 31.0f);
+    eventTextField = [[UITextField alloc] initWithFrame:textFieldFrame];
+    eventTextField.placeholder = @"event text";
+    eventTextField.backgroundColor = [UIColor whiteColor];
+    eventTextField.textColor = [UIColor blackColor];
+    eventTextField.font = [UIFont systemFontOfSize:14.0f];
+    eventTextField.borderStyle = UITextBorderStyleRoundedRect;
+    eventTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    eventTextField.returnKeyType = UIReturnKeyDone;
+    eventTextField.textAlignment = UITextAlignmentLeft;
+    eventTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    eventTextField.tag = 2;
+    eventTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    [self.view addSubview:eventTextField];
     [super viewDidLoad];
-    theEventTextField = [[UITextField alloc] initWithFrame:CGRectMake(90.0f, 110.0f, 80.0f, 30.0f)];
-    [self.view addSubview:theEventTextField];
+    self.eventTextField.delegate = self;
+    //self.displayLabel2.text = self.stringFromTextField1;
 	// Do any additional setup after loading the view.
+    CGRect pickerFrame = CGRectMake(0,250,0,0);
+    
+    UIDatePicker *myPicker = [[UIDatePicker alloc] initWithFrame:pickerFrame];
+    [myPicker addTarget:self action:@selector(pickerChanged:)               forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:myPicker];
 }
-
-
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(IBAction)onClose:(id)sender
-{
-    UIButton *button = (UIButton*)sender;
-    if (button != nil){
-        if (button.tag == SAVEBUTTONTAG){
-            [self dismissViewControllerAnimated:YES completion:NULL];
-        }
-        else if (button.tag == 1){
-            [self hideKeyboard];
-        }
-        else if (button.tag == 2){
-            
-        }
-    }
+
+- (IBAction)appendAndPassToVC1:(id)sender {
+    ViewController *VC1 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    VC1.stringFromTextField2 = self.eventTextField.text;
+    [self presentViewController:VC1 animated:YES completion:nil];
+        
+}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    return [textField resignFirstResponder];
 }
 -(void)tappaTappa:(UIButton*)button{
     if (button != nil){
@@ -115,20 +131,20 @@
             [self dismissViewControllerAnimated:YES completion:NULL];
         }
         if (button.tag == SAVEBUTTONTAG){
+            NSMutableString *appendedStrings;
+            
+             ViewController *VC1 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+             VC1.stringFromTextField2 = self.eventTextField.text;
             [self dismissViewControllerAnimated:YES completion:NULL];
-           
+            
         }
-        } else if (button.tag == CLOSEKEYBOARDBUTTONTAG){
+    } else if (button.tag == CLOSEKEYBOARDBUTTONTAG){
         [self hideKeyboard];
     }
 }
--(IBAction)saveToList:(id)sender
-{
-    
-}
-
 -(void)hideKeyboard{
     [self.view endEditing:YES];
 }
+
 
 @end

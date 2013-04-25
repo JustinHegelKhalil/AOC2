@@ -10,9 +10,9 @@
 
 
 
-@interface AddEventScreenViewController : UIViewController
+@interface AddEventScreenViewController : UIViewController<UITextFieldDelegate>
 {
-    IBOutlet UITextView *textView;
+    UITextField *theEventTextField;
     UIButton *backButton;
     UIButton *closeKeyboardButton;
     UILabel *eventTextLabel;
@@ -23,7 +23,7 @@
 }
 -(IBAction)onClose:(id)sender;
 -(void)tappaTappa:(UIButton*)button;
-
-
+@property (strong, nonatomic) NSString *dataToStoreFromTextField;
+-(IBAction)saveToList:(id)sender;
 
 @end

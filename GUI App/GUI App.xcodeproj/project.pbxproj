@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AEBAE07F1729B78B009D7C44 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEBAE07E1729B78B009D7C44 /* Storyboard.storyboard */; };
+		AEBAE0851729C368009D7C44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AED5099217285F14006475EC /* UIKit.framework */; };
+		AEBAE0861729C368009D7C44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AED5099417285F14006475EC /* Foundation.framework */; };
+		AEBAE0871729C368009D7C44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AED5099617285F14006475EC /* CoreGraphics.framework */; };
 		AED5099317285F14006475EC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AED5099217285F14006475EC /* UIKit.framework */; };
 		AED5099517285F14006475EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AED5099417285F14006475EC /* Foundation.framework */; };
 		AED5099717285F14006475EC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AED5099617285F14006475EC /* CoreGraphics.framework */; };
@@ -17,12 +21,12 @@
 		AED509A717285F15006475EC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AED509A617285F15006475EC /* Default@2x.png */; };
 		AED509A917285F15006475EC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AED509A817285F15006475EC /* Default-568h@2x.png */; };
 		AED509AC17285F15006475EC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AED509AB17285F15006475EC /* ViewController.m */; };
-		AED509AF17285F15006475EC /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED509AD17285F15006475EC /* ViewController.xib */; };
-		AED509B617286327006475EC /* AddEventScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED509B517286327006475EC /* AddEventScreen.xib */; };
 		AED509B9172867D4006475EC /* AddEventScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AED509B8172867D3006475EC /* AddEventScreenViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AEBAE07E1729B78B009D7C44 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		AEBAE0841729C368009D7C44 /* Data Passing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Data Passing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AED5098F17285F14006475EC /* GUI App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GUI App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AED5099217285F14006475EC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AED5099417285F14006475EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -38,13 +42,21 @@
 		AED509A817285F15006475EC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AED509AA17285F15006475EC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		AED509AB17285F15006475EC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		AED509AE17285F15006475EC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
-		AED509B517286327006475EC /* AddEventScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddEventScreen.xib; sourceTree = "<group>"; };
 		AED509B7172867D3006475EC /* AddEventScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddEventScreenViewController.h; path = ../AddEventScreenViewController.h; sourceTree = "<group>"; };
 		AED509B8172867D3006475EC /* AddEventScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddEventScreenViewController.m; path = ../AddEventScreenViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AEBAE0811729C368009D7C44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEBAE0851729C368009D7C44 /* UIKit.framework in Frameworks */,
+				AEBAE0861729C368009D7C44 /* Foundation.framework in Frameworks */,
+				AEBAE0871729C368009D7C44 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AED5098C17285F14006475EC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -71,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				AED5098F17285F14006475EC /* GUI App.app */,
+				AEBAE0841729C368009D7C44 /* Data Passing.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,8 +107,7 @@
 				AED509A217285F14006475EC /* AppDelegate.m */,
 				AED509AA17285F15006475EC /* ViewController.h */,
 				AED509AB17285F15006475EC /* ViewController.m */,
-				AED509AD17285F15006475EC /* ViewController.xib */,
-				AED509B517286327006475EC /* AddEventScreen.xib */,
+				AEBAE07E1729B78B009D7C44 /* Storyboard.storyboard */,
 				AED5099917285F14006475EC /* Supporting Files */,
 			);
 			path = "GUI App";
@@ -118,6 +130,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AEBAE0831729C368009D7C44 /* Data Passing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEBAE0A01729C368009D7C44 /* Build configuration list for PBXNativeTarget "Data Passing" */;
+			buildPhases = (
+				AEBAE0801729C368009D7C44 /* Sources */,
+				AEBAE0811729C368009D7C44 /* Frameworks */,
+				AEBAE0821729C368009D7C44 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Data Passing";
+			productName = "Data Passing";
+			productReference = AEBAE0841729C368009D7C44 /* Data Passing.app */;
+			productType = "com.apple.product-type.application";
+		};
 		AED5098E17285F14006475EC /* GUI App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AED509B217285F15006475EC /* Build configuration list for PBXNativeTarget "GUI App" */;
@@ -157,11 +186,19 @@
 			projectRoot = "";
 			targets = (
 				AED5098E17285F14006475EC /* GUI App */,
+				AEBAE0831729C368009D7C44 /* Data Passing */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AEBAE0821729C368009D7C44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AED5098D17285F14006475EC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -170,14 +207,20 @@
 				AED509A517285F15006475EC /* Default.png in Resources */,
 				AED509A717285F15006475EC /* Default@2x.png in Resources */,
 				AED509A917285F15006475EC /* Default-568h@2x.png in Resources */,
-				AED509AF17285F15006475EC /* ViewController.xib in Resources */,
-				AED509B617286327006475EC /* AddEventScreen.xib in Resources */,
+				AEBAE07F1729B78B009D7C44 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AEBAE0801729C368009D7C44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AED5098B17285F14006475EC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -200,17 +243,33 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		AED509AD17285F15006475EC /* ViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AED509AE17285F15006475EC /* en */,
-			);
-			name = ViewController.xib;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AEBAE0A11729C368009D7C44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Data Passing/Data Passing-Prefix.pch";
+				INFOPLIST_FILE = "Data Passing/Data Passing-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AEBAE0A21729C368009D7C44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Data Passing/Data Passing-Prefix.pch";
+				INFOPLIST_FILE = "Data Passing/Data Passing-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		AED509B017285F15006475EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -292,6 +351,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AEBAE0A01729C368009D7C44 /* Build configuration list for PBXNativeTarget "Data Passing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEBAE0A11729C368009D7C44 /* Debug */,
+				AEBAE0A21729C368009D7C44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		AED5098A17285F14006475EC /* Build configuration list for PBXProject "GUI App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -308,6 +375,7 @@
 				AED509B417285F15006475EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

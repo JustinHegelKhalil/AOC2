@@ -4,12 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Data Passing.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-		<key>GUI App.xcscheme</key>
+		<key>data passing.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -17,12 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>AEBAE0831729C368009D7C44</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AED5098E17285F14006475EC</key>
+		<key>AEBAE0AB1729C3A4009D7C44</key>
 		<dict>
 			<key>primary</key>
 			<true/>
