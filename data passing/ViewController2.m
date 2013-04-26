@@ -84,7 +84,7 @@
     ///// MASSIVE COPY AND PASTE FROM PREVIOUS VERSION OVER
     secretLabel = [[UILabel alloc] initWithFrame:CGRectMake(-10.0f, -10.0f, 5.0f, 5.0f)];
     secretLabel.text = self.stringFromTextField1;
-    [self.view addSubview:secretLabel];
+    //[self.view addSubview:secretLabel];
     
     CGRect textFieldFrame = CGRectMake(20.0f, 100.0f, 280.0f, 31.0f);
     eventTextField = [[UITextField alloc] initWithFrame:textFieldFrame];
@@ -95,7 +95,7 @@
     eventTextField.borderStyle = UITextBorderStyleRoundedRect;
     eventTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     eventTextField.returnKeyType = UIReturnKeyDone;
-    eventTextField.textAlignment = UITextAlignmentLeft;
+    eventTextField.textAlignment = NSTextAlignmentLeft;
     eventTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     eventTextField.tag = 2;
     eventTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -123,7 +123,7 @@
 
 - (IBAction)appendAndPassToVC1:(id)sender {
     NSString *dateString;
-    NSString *prevList = secretLabel.text;
+    //NSString *prevList = secretLabel.text;
     NSString *lineEnder = @"\n";
     if (secretHolderOfDate == NULL){
         NSDate *todaysDate = [NSDate date];
@@ -161,9 +161,9 @@
         }
         if (button.tag == SAVEBUTTONTAG){
             NSString *prevList = self.stringFromTextField1;
-            NSString *lineEnder = @"\n";
+            //NSString *lineEnder = @"\n";
             NSLog(@"%@", prevList);
-            NSMutableString *appendedStrings = [NSString stringWithFormat:@"%@ %@ %@ %@", prevList, secretHolderOfDate, eventTextField.text, lineEnder];
+            //NSMutableString *appendedStrings = [NSString stringWithFormat:@"%@ %@ %@ %@", prevList, secretHolderOfDate, eventTextField.text, lineEnder];
             
              ViewController *VC1 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
              VC1.stringFromTextField2 = self.eventTextField.text;

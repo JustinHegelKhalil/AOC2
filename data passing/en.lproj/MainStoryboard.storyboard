@@ -34,17 +34,27 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="firstTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FW5-Lw-6uU">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="GGp-zJ-Jpi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="FW5-Lw-6uU" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="H8k-fH-GSD"/>
                             <constraint firstItem="AGb-vo-udt" firstAttribute="top" secondItem="3" secondAttribute="top" constant="111" id="LTP-oV-cUH"/>
                             <constraint firstItem="FWe-gO-3F5" firstAttribute="top" secondItem="3" secondAttribute="top" constant="198" id="PNM-ly-WZq"/>
                             <constraint firstItem="AGb-vo-udt" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="77" id="Rw0-pf-sHz"/>
                             <constraint firstItem="FWe-gO-3F5" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="31" id="tVV-D0-9TC"/>
+                            <constraint firstItem="FW5-Lw-6uU" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="uKE-Py-kQG"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="displayLabel1" destination="FWe-gO-3F5" id="CBl-sP-wdS"/>
+                        <outlet property="firstTextField" destination="FW5-Lw-6uU" id="guu-Ve-cTh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -109,16 +119,17 @@
                 <relationship kind="action" name="passTextToVC2:"/>
                 <relationship kind="outlet" name="displayLabel1" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="firstTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="hiddenTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
             </relationships>
         </class>
         <class className="ViewController2" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController2.h"/>
             <relationships>
                 <relationship kind="action" name="appendAndPassToVC1:"/>
+                <relationship kind="action" name="passTextToVC2:"/>
+                <relationship kind="outlet" name="displayLabel1" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="displayLabel2" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="eventTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
     </classes>
