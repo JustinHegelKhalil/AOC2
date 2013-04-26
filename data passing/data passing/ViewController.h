@@ -18,7 +18,7 @@
 }
 
 
-@property (weak, nonatomic) IBOutlet UITextField *firstTextField;
+@property (strong, nonatomic) IBOutlet UITextField *firstTextField;
 -(void)tappaTappa:(UIButton*)button;
 
 @property (weak, nonatomic) IBOutlet UILabel *displayLabel1;

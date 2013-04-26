@@ -12,13 +12,6 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="first text" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tbR-fd-doX">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="254" id="VWI-3x-ceR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGb-vo-udt">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="pass text to VC2">
@@ -46,15 +39,12 @@
                         <constraints>
                             <constraint firstItem="AGb-vo-udt" firstAttribute="top" secondItem="3" secondAttribute="top" constant="111" id="LTP-oV-cUH"/>
                             <constraint firstItem="FWe-gO-3F5" firstAttribute="top" secondItem="3" secondAttribute="top" constant="198" id="PNM-ly-WZq"/>
-                            <constraint firstItem="AGb-vo-udt" firstAttribute="centerX" secondItem="tbR-fd-doX" secondAttribute="centerX" type="default" id="VXw-zp-XIB"/>
-                            <constraint firstItem="tbR-fd-doX" firstAttribute="top" secondItem="3" secondAttribute="top" constant="34" id="mgj-5s-Imr"/>
-                            <constraint firstItem="tbR-fd-doX" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="pXs-so-h4G"/>
-                            <constraint firstItem="FWe-gO-3F5" firstAttribute="trailing" secondItem="tbR-fd-doX" secondAttribute="trailing" type="default" id="sGJ-Qs-4Of"/>
+                            <constraint firstItem="AGb-vo-udt" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="77" id="Rw0-pf-sHz"/>
+                            <constraint firstItem="FWe-gO-3F5" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="31" id="tVV-D0-9TC"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="displayLabel1" destination="FWe-gO-3F5" id="CBl-sP-wdS"/>
-                        <outlet property="firstTextField" destination="tbR-fd-doX" id="WMo-n2-4dF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -119,6 +109,8 @@
                 <relationship kind="action" name="passTextToVC2:"/>
                 <relationship kind="outlet" name="displayLabel1" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="firstTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="hiddenTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
             </relationships>
         </class>
         <class className="ViewController2" superclassName="UIViewController">

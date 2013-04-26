@@ -10,6 +10,7 @@
 
 @interface ViewController2 : UIViewController<UITextFieldDelegate>
 {
+    NSString *secretHolderOfDate;
     UILabel *secretLabel;
     UIButton *backButton;
     UIButton *closeKeyboardButton;
@@ -19,6 +20,7 @@
     UILabel *buttonBG;
     UIButton *addEventButton;
 }
+
 @property (weak, nonatomic) IBOutlet UILabel *displayLabel2;
 -(void)tappaTappa:(UIButton*)button;
 @property (strong, nonatomic) IBOutlet UITextField *eventTextField;

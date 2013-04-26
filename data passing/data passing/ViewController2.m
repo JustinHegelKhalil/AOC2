@@ -32,7 +32,7 @@
 - (void)viewDidLoad
 {
     
-    
+    NSLog(@"%@", self.stringFromTextField1);
     
     ///// MASSIVE COPY AND PASTE FROM PREVIOUS VERSION
     UITapGestureRecognizer* tapHere = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
@@ -82,8 +82,9 @@
     }
 
     ///// MASSIVE COPY AND PASTE FROM PREVIOUS VERSION OVER
-    secretLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 10.0f, 10.0f, 10.0f)];
+    secretLabel = [[UILabel alloc] initWithFrame:CGRectMake(-10.0f, -10.0f, 5.0f, 5.0f)];
     secretLabel.text = self.stringFromTextField1;
+    [self.view addSubview:secretLabel];
     
     CGRect textFieldFrame = CGRectMake(20.0f, 100.0f, 280.0f, 31.0f);
     eventTextField = [[UITextField alloc] initWithFrame:textFieldFrame];
@@ -101,13 +102,17 @@
     [self.view addSubview:eventTextField];
     [super viewDidLoad];
     self.eventTextField.delegate = self;
-    //self.displayLabel2.text = self.stringFromTextField1;
+    self.displayLabel2.text = self.stringFromTextField1;
 	// Do any additional setup after loading the view.
     CGRect pickerFrame = CGRectMake(0,250,0,0);
     
-    UIDatePicker *myPicker = [[UIDatePicker alloc] initWithFrame:pickerFrame];
-    [myPicker addTarget:self action:@selector(pickerChanged:)               forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:myPicker];
+    UIDatePicker *datePickerThing = [[UIDatePicker alloc] initWithFrame:pickerFrame];
+    [datePickerThing addTarget:self action:@selector(pickerChanged:)               forControlEvents:UIControlEventValueChanged];
+    NSDate *todaysDate = [NSDate date];
+    datePickerThing.minimumDate = todaysDate;
+    datePickerThing.date = todaysDate;
+
+    [self.view addSubview:datePickerThing];
 }
 
 - (void)didReceiveMemoryWarning
@@ -117,13 +122,37 @@
 }
 
 - (IBAction)appendAndPassToVC1:(id)sender {
+    NSString *dateString;
+    NSString *prevList = secretLabel.text;
+    NSString *lineEnder = @"\n";
+    if (secretHolderOfDate == NULL){
+        NSDate *todaysDate = [NSDate date];
+        NSDateFormatter *dateFormatted = [[NSDateFormatter alloc]init];
+        [dateFormatted setDateStyle:NSDateFormatterFullStyle];
+        [dateFormatted setTimeStyle:NSDateFormatterFullStyle];
+        dateString = [dateFormatted stringFromDate:todaysDate];
+    }
+    NSLog(@"%@", secretLabel.text);
+    NSMutableString *appendedStrings = [NSString stringWithFormat:@"%@ %@ %@ %@", self.stringFromTextField1, secretHolderOfDate, eventTextField.text, lineEnder];
+    NSString *immutableString = [NSString stringWithString:appendedStrings];
+    NSLog(@"Output %@", secretHolderOfDate);
     ViewController *VC1 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
-    VC1.stringFromTextField2 = self.eventTextField.text;
+    VC1.stringFromTextField2 = immutableString;
     [self presentViewController:VC1 animated:YES completion:nil];
         
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     return [textField resignFirstResponder];
+}
+- (void)pickerChanged:(id)sender
+{
+    NSDateFormatter *dateFormatted = [[NSDateFormatter alloc]init];
+    [dateFormatted setDateStyle:NSDateFormatterFullStyle];
+    [dateFormatted setTimeStyle:NSDateFormatterFullStyle];
+    NSString *dateString = [dateFormatted stringFromDate:[sender date]];
+    secretHolderOfDate = dateString;
+    NSLog(@"%@", secretHolderOfDate);
+    
 }
 -(void)tappaTappa:(UIButton*)button{
     if (button != nil){
@@ -131,7 +160,10 @@
             [self dismissViewControllerAnimated:YES completion:NULL];
         }
         if (button.tag == SAVEBUTTONTAG){
-            NSMutableString *appendedStrings;
+            NSString *prevList = self.stringFromTextField1;
+            NSString *lineEnder = @"\n";
+            NSLog(@"%@", prevList);
+            NSMutableString *appendedStrings = [NSString stringWithFormat:@"%@ %@ %@ %@", prevList, secretHolderOfDate, eventTextField.text, lineEnder];
             
              ViewController *VC1 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
              VC1.stringFromTextField2 = self.eventTextField.text;

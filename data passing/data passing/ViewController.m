@@ -14,7 +14,10 @@
 
 @end
 
+
+
 @implementation ViewController
+@synthesize firstTextField;
 
 - (void)viewDidLoad
 {
@@ -56,7 +59,7 @@
     }
 
     /// MASSIVE COPY AND PASTE FROM PREVIOUS VERSION ENDED
-    
+
     CGRect textViewFrame = CGRectMake(0.0f, 40.0f, 320.0f, 310.0f);
     textView = [[UITextView alloc] initWithFrame:textViewFrame];
     textView.returnKeyType = UIReturnKeyDone;
@@ -67,11 +70,12 @@
     self.firstTextField.delegate = self;
     NSString *defaultText = @"events go here..";
     textView.text = defaultText;
-    if (self.stringFromTextField2 != nil){
+    if (self.stringFromTextField2 != NULL){
         textView.text = self.stringFromTextField2;
+        firstTextField.text = self.stringFromTextField2;
     }
   
-   
+ 
 
     
 	// Do any additional setup after loading the view, typically from a nib.
@@ -82,6 +86,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 - (IBAction)passTextToVC2:(id)sender {
     ViewController2 *VC2 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController2"];
