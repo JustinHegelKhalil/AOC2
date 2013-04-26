@@ -68,7 +68,7 @@
     eventTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 65.0f, 190.0f, 25.0f)];
     if (eventTextLabel != nil){
         eventTextLabel.text = eventTextLabelString;
-        eventTextLabel.backgroundColor = [UIColor grayColor];
+        eventTextLabel.backgroundColor = [UIColor lightGrayColor];
         eventTextLabel.textColor = [UIColor whiteColor];
         [self.view addSubview:eventTextLabel];
     }
@@ -76,7 +76,7 @@
     setTimeAndDate = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 210.0f, 290.0f, 30.0f)];
     if (setTimeAndDate != nil){
         setTimeAndDate.text = setTimeAndDateString;
-        setTimeAndDate.backgroundColor = [UIColor grayColor];
+        setTimeAndDate.backgroundColor = [UIColor lightGrayColor];
         setTimeAndDate.textColor = [UIColor whiteColor];
         [self.view addSubview:setTimeAndDate];
     }
@@ -102,6 +102,7 @@
     [self.view addSubview:eventTextField];
     [super viewDidLoad];
     self.eventTextField.delegate = self;
+    
     self.displayLabel2.text = self.stringFromTextField1;
 	// Do any additional setup after loading the view.
     CGRect pickerFrame = CGRectMake(0,250,0,0);
