@@ -48,24 +48,8 @@
     ///// MASSIVE COPY AND PASTE FROM PREVIOUS VERSION
     UITapGestureRecognizer* tapHere = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.view addGestureRecognizer:tapHere];
-    NSString *backButtonString = @"back";
-    backButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    if (backButton != nil){
-        backButton.frame = CGRectMake(10.0f, 10.0f, 90.0f, 50.0f);
-        backButton.tag = SAVEBUTTONTAG;
-        [backButton setTitle:backButtonString forState:UIControlStateNormal];
-        [backButton addTarget:self action:@selector(tappaTappa:) forControlEvents:UIControlEventTouchUpInside];
-        //[self.view addSubview:backButton];
-    }
-    NSString *saveButtonString = @"Save Event";
-    saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    if (saveButton != nil){
-        saveButton.frame = CGRectMake(220.0f, 155.0f, 90.0f, 50.0f);
-        saveButton.tag = SAVEBUTTONTAG;
-        [saveButton setTitle:saveButtonString forState:UIControlStateNormal];
-        [saveButton addTarget:self action:@selector(appendAndPassToVC1:) forControlEvents:UIControlEventTouchUpInside];
-        //[self.view addSubview:saveButton];
-    }
+    
+   
     NSString *closeKeyboardButtonString = @"Hide Keyboard";
     closeKeyboardButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     if (closeKeyboardButton != nil){
@@ -94,7 +78,7 @@
 
     ///// MASSIVE COPY AND PASTE FROM PREVIOUS VERSION OVER
     secretLabel = [[UILabel alloc] initWithFrame:CGRectMake(-10.0f, -10.0f, 5.0f, 5.0f)];
-    secretLabel.text = self.stringFromTextField1;
+    
     //[self.view addSubview:secretLabel];
     
     CGRect textFieldFrame = CGRectMake(20.0f, 80.0f, 280.0f, 31.0f);
@@ -112,12 +96,12 @@
     eventTextField.tag = 2;
     eventTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [self.view addSubview:eventTextField];
-    [super viewDidLoad];
     self.eventTextField.delegate = self;
+    [super viewDidLoad];
+    
     }
     
-    self.displayLabel2.text = self.stringFromTextField1;
-    stringletonString = self.stringFromTextField1;
+   
     Stringleton *goTime = [Stringleton secretGarden];
     NSString *tempString = goTime.batonString;
     NSLog(@"here's where I output a test version of stored singleton string");
@@ -172,32 +156,7 @@
 }
 
 
-- (IBAction)appendAndPassToVC1:(id)sender {
-    NSString *dateString;
-    //NSString *prevList = secretLabel.text;
-    NSString *lineEnder = @"\n";
-    if (secretHolderOfDate == NULL){
-        NSDate *todaysDate = [NSDate date];
-        NSDateFormatter *dateFormatted = [[NSDateFormatter alloc]init];
-        [dateFormatted setDateStyle:NSDateFormatterFullStyle];
-        [dateFormatted setTimeStyle:NSDateFormatterFullStyle];
-        dateString = [dateFormatted stringFromDate:todaysDate];
-    }
-    
-    //NSLog(@"%@", secretLabel.text);
-    NSMutableString *appendedStrings = [NSString stringWithFormat:@"%@ %@ %@ %@", self.stringFromTextField1, secretHolderOfDate, eventTextField.text, lineEnder];
-    NSString *immutableString = [NSString stringWithString:appendedStrings];
-    Stringleton *baton = [Stringleton secretGarden];
-    baton.batonString = immutableString;
-    NSString *tempString = baton.batonString;
-    NSLog(@"here's where I output a test version of stored singleton string");
-    NSLog(@"and here is that string! %@", tempString);
-    NSLog(@"Output %@", secretHolderOfDate);
-    ViewController *VC1 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
-    VC1.stringFromTextField2 = immutableString;
-    [self presentViewController:VC1 animated:YES completion:nil];
-        
-}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     //NSString *tempString = goTime.batonString;
     //NSLog(@"here's where I output on clicking the 'hide keyboard' button");
@@ -225,8 +184,8 @@
             //NSLog(@"%@", prevList);
             //NSMutableString *appendedStrings = [NSString stringWithFormat:@"%@ %@ %@ %@", prevList, secretHolderOfDate, eventTextField.text, lineEnder];
             
-             ViewController *VC1 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
-             VC1.stringFromTextField2 = self.eventTextField.text;
+             
+            
             [self dismissViewControllerAnimated:YES completion:NULL];
             
         }

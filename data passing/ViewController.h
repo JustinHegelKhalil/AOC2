@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Stringleton.h"
 
-@interface ViewController : UIViewController<UITextFieldDelegate>
+@interface ViewController : UIViewController
 {
+    UITextField *firstTextField;
     UIButton *saveButton;
     IBOutlet UILabel *swipeRightLabel;
     UISwipeGestureRecognizer *swipeToTheRight;
@@ -23,10 +24,10 @@
 }
 
 @property (strong, nonatomic)NSString *singletonString;
-@property (strong, nonatomic) IBOutlet UITextField *firstTextField;
+
 -(void)tappaTappa:(UIButton*)button;
 
 @property (weak, nonatomic) IBOutlet UILabel *displayLabel1;
-- (IBAction)passTextToVC2:(id)sender;
-@property (strong, nonatomic) NSString *stringFromTextField2;
+
+
 @end

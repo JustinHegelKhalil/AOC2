@@ -11,14 +11,16 @@
 #define SAVETAG 0
 #define ADDEVENTBUTTONTAG 1
 
-@interface ViewController ()
+@interface ViewController () {
+    NSString *stringletonString;
+}
 
 @end
 
 
 
 @implementation ViewController
-@synthesize firstTextField;
+@synthesize singletonString = _singletonString;
 
 - (void)viewDidLoad
 {
@@ -42,21 +44,6 @@
     titleLabel.textColor = [UIColor whiteColor];
     if (titleLabel != nil){
         [self.view addSubview:titleLabel];
-    }
-    NSString *infoRegardingEventsLabelText = @"Events go here...";
-    infoRegardingEventsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 40.0f, 350.0f, 40.0f)];
-    infoRegardingEventsLabel.text = infoRegardingEventsLabelText;
-    infoRegardingEventsLabel.backgroundColor = [UIColor grayColor];
-    infoRegardingEventsLabel.textColor = [UIColor whiteColor];
-    if (infoRegardingEventsLabel != nil){
-       //[self.view addSubview:infoRegardingEventsLabel];
-    }
-    buttonBG = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 350.0f, 320.0f, 120.0f)];
-    buttonBG.text = nil;
-    buttonBG.backgroundColor = [UIColor darkGrayColor];
-    buttonBG.textColor = [UIColor whiteColor];
-    if (buttonBG != nil){
-        //[self.view addSubview:buttonBG];
     }
     NSString *addEventButtonString = @"Add Event";
     
@@ -105,7 +92,6 @@
         [self.view addSubview:saveButton];
     }
     [super viewDidLoad];
-    self.firstTextField.delegate = self;
     NSString *defaultText = @"events go here..";
     textView.text = defaultText;
     
@@ -144,13 +130,7 @@
 }
 
 
-- (IBAction)passTextToVC2:(id)sender {
-    ViewController2 *VC2 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController2"];
-    VC2.stringFromTextField1 = self.firstTextField.text;
-    [self presentViewController:VC2 animated:YES completion:nil];
-    NSLog(@"THIS SHOULD NEVER SHOW UP");
-    
-}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     return [textField resignFirstResponder];
 }

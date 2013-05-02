@@ -11,15 +11,14 @@
 
 @interface ViewController2 : UIViewController<UITextFieldDelegate>
 {
+    UITextField *eventTextField;
     IBOutlet UILabel *swipeLeftLabel;
     UISwipeGestureRecognizer *swipeToTheLeft;
     NSString *batonString;
     NSString *secretHolderOfDate;
     UILabel *secretLabel;
-    UIButton *backButton;
     UIButton *closeKeyboardButton;
     UILabel *eventTextLabel;
-    UIButton *saveButton;
     UILabel *setTimeAndDate;
     UILabel *buttonBG;
     UIButton *addEventButton;
@@ -28,7 +27,7 @@
 @property (strong, nonatomic)NSString *singletonString;
 @property (weak, nonatomic) IBOutlet UILabel *displayLabel2;
 -(void)tappaTappa:(UIButton*)button;
-@property (strong, nonatomic) IBOutlet UITextField *eventTextField;
+@property (strong, nonatomic)UITextField *eventTextField;
 - (IBAction)appendAndPassToVC1:(id)sender;
 @property (strong, nonatomic) NSString *stringFromTextField1;
 @end
