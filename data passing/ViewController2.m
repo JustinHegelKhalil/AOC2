@@ -141,11 +141,11 @@
     if (secretHolderOfDate == NULL){
         NSDate *todaysDate = [NSDate date];
         NSDateFormatter *dateFormatted = [[NSDateFormatter alloc]init];
-        [dateFormatted setDateStyle:NSDateFormatterFullStyle];
-        [dateFormatted setTimeStyle:NSDateFormatterFullStyle];
+        [dateFormatted setDateStyle:NSDateFormatterMediumStyle];
+        [dateFormatted setTimeStyle:NSDateFormatterMediumStyle];
         dateString = [dateFormatted stringFromDate:todaysDate];
     }
-    NSMutableString *appendedStrings = [NSString stringWithFormat:@"%@ %@ %@ %@", currentText, secretHolderOfDate, eventTextField.text, lineEnder];
+    NSMutableString *appendedStrings = [NSString stringWithFormat:@"%@ %@ %@ %@ %@", currentText, lineEnder,secretHolderOfDate, eventTextField.text, lineEnder];
     NSString *immutableString = [NSString stringWithString:appendedStrings];
     goTime.batonString = immutableString;
     
@@ -165,8 +165,8 @@
 - (void)pickerChanged:(id)sender
 {
     NSDateFormatter *dateFormatted = [[NSDateFormatter alloc]init];
-    [dateFormatted setDateStyle:NSDateFormatterFullStyle];
-    [dateFormatted setTimeStyle:NSDateFormatterFullStyle];
+    [dateFormatted setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatted setTimeStyle:NSDateFormatterMediumStyle];
     NSString *dateString = [dateFormatted stringFromDate:[sender date]];
     secretHolderOfDate = dateString;
     //NSLog(@"%@", secretHolderOfDate);
