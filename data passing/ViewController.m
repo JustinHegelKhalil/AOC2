@@ -8,7 +8,8 @@
 
 #import "ViewController.h"
 #import "ViewController2.h"
-#define ADDEVENTBUTTONTAG 0
+#define SAVETAG 0
+#define ADDEVENTBUTTONTAG 1
 
 @interface ViewController ()
 
@@ -21,6 +22,12 @@
 
 - (void)viewDidLoad
 {
+    NSUserDefaults *savedStuff = [NSUserDefaults standardUserDefaults];
+    NSString *content = [savedStuff stringForKey:@"savedDates"];
+    if (content.length > 0){
+        NSLog(@"%@",content);
+    }
+  
     
     Stringleton *baton = [Stringleton secretGarden];
     NSString *tempString = baton.batonString;
@@ -42,7 +49,7 @@
     infoRegardingEventsLabel.backgroundColor = [UIColor grayColor];
     infoRegardingEventsLabel.textColor = [UIColor whiteColor];
     if (infoRegardingEventsLabel != nil){
-       // [self.view addSubview:infoRegardingEventsLabel];
+       //[self.view addSubview:infoRegardingEventsLabel];
     }
     buttonBG = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 350.0f, 320.0f, 120.0f)];
     buttonBG.text = nil;
@@ -59,7 +66,7 @@
         addEventButton.tag = ADDEVENTBUTTONTAG;
         [addEventButton setTitle:addEventButtonString forState:UIControlStateNormal];
         [addEventButton addTarget:self action:@selector(tappaTappa:) forControlEvents:UIControlEventTouchUpInside];
-        //[self.view addSubview:addEventButton];
+        [self.view addSubview:addEventButton];
     }
 
     /// MASSIVE COPY AND PASTE FROM PREVIOUS VERSION ENDED
@@ -68,8 +75,16 @@
     textView = [[UITextView alloc] initWithFrame:textViewFrame];
     textView.returnKeyType = UIReturnKeyDone;
     textView.editable = NO;
+    NSString *datesSaved = [[NSUserDefaults standardUserDefaults] stringForKey:@"savedDates"];
+    if (datesSaved.length > 10){
+        textView.text = datesSaved;
+        NSLog(@"%@", datesSaved);
+    } else textView.text = baton.batonString;
     
     [self.view addSubview:textView];
+    if (content.length > 10){
+        textView.text = content;
+    }
     
     // swipe label here
     swipeRightLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 400.0f, 320.0f, 50.0f)];
@@ -79,18 +94,20 @@
     swipeRightLabel.textAlignment = NSTextAlignmentRight;
     swipeRightLabel.userInteractionEnabled = YES;
     [self.view addSubview:swipeRightLabel];
-
+    
+    saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    if (saveButton != nil){
+        saveButton.frame = CGRectMake(250.0f, 5.0f, 60.0f, 30.0f);
+        saveButton.tag = SAVETAG;
+        NSString *saveString = @"Save";
+        [saveButton setTitle:saveString forState:UIControlStateNormal];
+        [saveButton addTarget:self action:@selector(tappaTappa:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:saveButton];
+    }
     [super viewDidLoad];
     self.firstTextField.delegate = self;
     NSString *defaultText = @"events go here..";
     textView.text = defaultText;
-    if (self.stringFromTextField2 != NULL){
-        textView.text = self.stringFromTextField2;
-        firstTextField.text = self.stringFromTextField2;
-    }
-  
- 
-
     
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -103,6 +120,14 @@
     Stringleton *baton = [Stringleton secretGarden];
     NSString *tempString = baton.batonString;
     textView.text = tempString;
+    NSUserDefaults *getter = [NSUserDefaults standardUserDefaults];
+    NSString *gotIt = [getter stringForKey:@"savedDates"];
+    if (gotIt.length > baton.batonString.length){
+    textView.text = gotIt;
+    } else {textView.text = baton.batonString;
+    }
+    //NSString *datesSaved = [[NSUserDefaults standardUserDefaults] stringForKey:@"savedDates"];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -114,7 +139,8 @@
 {
     ViewController2 *VC2 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController2"];
     [self presentViewController:VC2 animated:YES completion:nil];
-
+    Stringleton *baton = [Stringleton secretGarden];
+    baton.batonString = textView.text;
 }
 
 
@@ -122,6 +148,7 @@
     ViewController2 *VC2 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController2"];
     VC2.stringFromTextField1 = self.firstTextField.text;
     [self presentViewController:VC2 animated:YES completion:nil];
+    NSLog(@"THIS SHOULD NEVER SHOW UP");
     
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -129,10 +156,15 @@
 }
 -(void)tappaTappa:(UIButton*)button{
     if (button != nil){
-        if (button.tag == ADDEVENTBUTTONTAG){
-            ViewController2 *VC2 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController2"];
-            VC2.stringFromTextField1 = self.firstTextField.text;
-            [self presentViewController:VC2 animated:YES completion:nil];
+        if (button.tag == SAVETAG){
+            //// PUT SAVE CONTENT STUFF HERE
+            NSString *savableDates = textView.text;
+            NSUserDefaults *defaultStuff = [NSUserDefaults standardUserDefaults];
+            [defaultStuff setObject:savableDates forKey:@"savedDates"];
+            NSUserDefaults *got = [NSUserDefaults standardUserDefaults];
+            NSString *retrievedDates = [got stringForKey:@"savedDates"];
+            NSLog(@"%@", retrievedDates);
+            [defaultStuff synchronize];
 
         }
     }

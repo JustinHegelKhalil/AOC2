@@ -99,6 +99,7 @@
     
     CGRect textFieldFrame = CGRectMake(20.0f, 80.0f, 280.0f, 31.0f);
     eventTextField = [[UITextField alloc] initWithFrame:textFieldFrame];
+    if (eventTextField != nil){
     eventTextField.placeholder = @"event text";
     eventTextField.backgroundColor = [UIColor whiteColor];
     eventTextField.textColor = [UIColor blackColor];
@@ -113,6 +114,7 @@
     [self.view addSubview:eventTextField];
     [super viewDidLoad];
     self.eventTextField.delegate = self;
+    }
     
     self.displayLabel2.text = self.stringFromTextField1;
     stringletonString = self.stringFromTextField1;
@@ -124,7 +126,7 @@
     CGRect pickerFrame = CGRectMake(0,250,0,0);
     
     UIDatePicker *datePickerThing = [[UIDatePicker alloc] initWithFrame:pickerFrame];
-    [datePickerThing addTarget:self action:@selector(pickerChanged:)               forControlEvents:UIControlEventValueChanged];
+    [datePickerThing addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
     NSDate *todaysDate = [NSDate date];
     datePickerThing.minimumDate = todaysDate;
     datePickerThing.date = todaysDate;
@@ -162,6 +164,7 @@
     NSMutableString *appendedStrings = [NSString stringWithFormat:@"%@ %@ %@ %@", currentText, secretHolderOfDate, eventTextField.text, lineEnder];
     NSString *immutableString = [NSString stringWithString:appendedStrings];
     goTime.batonString = immutableString;
+    
     ViewController2 *VC1 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
     [self presentViewController:VC1 animated:YES completion:nil];
     

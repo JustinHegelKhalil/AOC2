@@ -11,6 +11,7 @@
 
 @interface ViewController : UIViewController<UITextFieldDelegate>
 {
+    UIButton *saveButton;
     IBOutlet UILabel *swipeRightLabel;
     UISwipeGestureRecognizer *swipeToTheRight;
     NSString *batonString;
