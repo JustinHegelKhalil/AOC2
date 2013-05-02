@@ -22,12 +22,16 @@
 - (void)viewDidLoad
 {
     
+    Stringleton *baton = [Stringleton secretGarden];
+    NSString *tempString = baton.batonString;
+    NSLog(@"THIS IS WHERE I OUTPUT THE STORED STRING FROM THE SINGLETON IN ALL CAPS SO THAT IT STANDS-OUT IN THE OUTPUT WINDOW:");
+    NSLog(@"HERE!!!!!!! %@", tempString);
     /// MASSIVE COPY AND PASTE FROM PREVIOUS VERSION STARTS
-    NSString *titleLabelText = @"Event Planner App #1";
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 40.0f)];
+    NSString *titleLabelText = @"Date Planner App #2";
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 50.0f)];
     titleLabel.text = titleLabelText;
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.backgroundColor = [UIColor blackColor];
+    titleLabel.textAlignment = NSTextAlignmentLeft;
+    titleLabel.backgroundColor = [UIColor orangeColor];
     titleLabel.textColor = [UIColor whiteColor];
     if (titleLabel != nil){
         [self.view addSubview:titleLabel];
@@ -45,7 +49,7 @@
     buttonBG.backgroundColor = [UIColor darkGrayColor];
     buttonBG.textColor = [UIColor whiteColor];
     if (buttonBG != nil){
-        [self.view addSubview:buttonBG];
+        //[self.view addSubview:buttonBG];
     }
     NSString *addEventButtonString = @"Add Event";
     
@@ -55,16 +59,26 @@
         addEventButton.tag = ADDEVENTBUTTONTAG;
         [addEventButton setTitle:addEventButtonString forState:UIControlStateNormal];
         [addEventButton addTarget:self action:@selector(tappaTappa:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:addEventButton];
+        //[self.view addSubview:addEventButton];
     }
 
     /// MASSIVE COPY AND PASTE FROM PREVIOUS VERSION ENDED
 
-    CGRect textViewFrame = CGRectMake(0.0f, 40.0f, 320.0f, 310.0f);
+    CGRect textViewFrame = CGRectMake(0.0f, 40.0f, 320.0f, 370.0f);
     textView = [[UITextView alloc] initWithFrame:textViewFrame];
     textView.returnKeyType = UIReturnKeyDone;
     textView.editable = NO;
+    
     [self.view addSubview:textView];
+    
+    // swipe label here
+    swipeRightLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 400.0f, 320.0f, 50.0f)];
+    swipeRightLabel.text = @"Swipe right to add event";
+    swipeRightLabel.backgroundColor = [UIColor orangeColor];
+    swipeRightLabel.textColor = [UIColor whiteColor];
+    swipeRightLabel.textAlignment = NSTextAlignmentRight;
+    swipeRightLabel.userInteractionEnabled = YES;
+    [self.view addSubview:swipeRightLabel];
 
     [super viewDidLoad];
     self.firstTextField.delegate = self;
@@ -73,9 +87,6 @@
     if (self.stringFromTextField2 != NULL){
         textView.text = self.stringFromTextField2;
         firstTextField.text = self.stringFromTextField2;
-        NSString *tempString = [Stringleton secretGarden].batonString;
-        NSLog(@"Now, I output the same string from a different source, making sure that it's still the same one.");
-        NSLog(@"and here is that string again (for checking porpoises)! %@", tempString);
     }
   
  
@@ -83,11 +94,27 @@
     
 	// Do any additional setup after loading the view, typically from a nib.
 }
+-(void)viewDidAppear:(BOOL)animated
+{
+    swipeToTheRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swiped:)];
+    swipeToTheRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [swipeRightLabel addGestureRecognizer:swipeToTheRight];
+    [super viewDidAppear:animated];
+    Stringleton *baton = [Stringleton secretGarden];
+    NSString *tempString = baton.batonString;
+    textView.text = tempString;
+}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)swiped:(UIGestureRecognizer*)recognizer
+{
+    ViewController2 *VC2 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController2"];
+    [self presentViewController:VC2 animated:YES completion:nil];
+
 }
 
 

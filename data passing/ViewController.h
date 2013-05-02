@@ -11,6 +11,8 @@
 
 @interface ViewController : UIViewController<UITextFieldDelegate>
 {
+    IBOutlet UILabel *swipeRightLabel;
+    UISwipeGestureRecognizer *swipeToTheRight;
     NSString *batonString;
     UITextView *textView;
     UILabel *titleLabel;
@@ -19,7 +21,7 @@
     UIButton *addEventButton;
 }
 
-@property (strong, nonatomic)NSString *stringletonString;
+@property (strong, nonatomic)NSString *singletonString;
 @property (strong, nonatomic) IBOutlet UITextField *firstTextField;
 -(void)tappaTappa:(UIButton*)button;
 

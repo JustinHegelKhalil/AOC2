@@ -19,7 +19,7 @@
 @end
 
 @implementation ViewController2
-@synthesize stringletonString = _stringletonString;
+@synthesize singletonString = _singletonString;
 @synthesize eventTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -33,8 +33,17 @@
 
 - (void)viewDidLoad
 {
+    swipeLeftLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 50.0f)];
+    if (swipeLeftLabel != nil){
+        swipeLeftLabel.text = @"swipe left to close.";
+        swipeLeftLabel.backgroundColor = [UIColor orangeColor];
+        swipeLeftLabel.textColor = [UIColor whiteColor];
+        swipeLeftLabel.userInteractionEnabled = YES;
+        [self.view addSubview:swipeLeftLabel];
+    }
     
-    NSLog(@"%@", self.stringFromTextField1);
+    
+    //NSLog(@"%@", self.stringFromTextField1);
     
     ///// MASSIVE COPY AND PASTE FROM PREVIOUS VERSION
     UITapGestureRecognizer* tapHere = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
@@ -46,7 +55,7 @@
         backButton.tag = SAVEBUTTONTAG;
         [backButton setTitle:backButtonString forState:UIControlStateNormal];
         [backButton addTarget:self action:@selector(tappaTappa:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:backButton];
+        //[self.view addSubview:backButton];
     }
     NSString *saveButtonString = @"Save Event";
     saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -55,22 +64,22 @@
         saveButton.tag = SAVEBUTTONTAG;
         [saveButton setTitle:saveButtonString forState:UIControlStateNormal];
         [saveButton addTarget:self action:@selector(appendAndPassToVC1:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:saveButton];
+        //[self.view addSubview:saveButton];
     }
     NSString *closeKeyboardButtonString = @"Hide Keyboard";
     closeKeyboardButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     if (closeKeyboardButton != nil){
-        closeKeyboardButton.frame = CGRectMake(120.0f, 10.0f, 190.0f, 50.0f);
+        closeKeyboardButton.frame = CGRectMake(150.0f, 115.0f, 150.0f, 50.0f);
         closeKeyboardButton.tag = CLOSEKEYBOARDBUTTONTAG;
         [closeKeyboardButton setTitle:closeKeyboardButtonString forState:UIControlStateNormal];
         [closeKeyboardButton addTarget:self action:@selector(hideKeyboard) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:closeKeyboardButton];
     }
     NSString *eventTextLabelString = @"event description";
-    eventTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 65.0f, 190.0f, 25.0f)];
+    eventTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 50.0f, 190.0f, 25.0f)];
     if (eventTextLabel != nil){
         eventTextLabel.text = eventTextLabelString;
-        eventTextLabel.backgroundColor = [UIColor lightGrayColor];
+        eventTextLabel.backgroundColor = [UIColor clearColor];
         eventTextLabel.textColor = [UIColor whiteColor];
         [self.view addSubview:eventTextLabel];
     }
@@ -88,7 +97,7 @@
     secretLabel.text = self.stringFromTextField1;
     //[self.view addSubview:secretLabel];
     
-    CGRect textFieldFrame = CGRectMake(20.0f, 100.0f, 280.0f, 31.0f);
+    CGRect textFieldFrame = CGRectMake(20.0f, 80.0f, 280.0f, 31.0f);
     eventTextField = [[UITextField alloc] initWithFrame:textFieldFrame];
     eventTextField.placeholder = @"event text";
     eventTextField.backgroundColor = [UIColor whiteColor];
@@ -108,7 +117,6 @@
     self.displayLabel2.text = self.stringFromTextField1;
     stringletonString = self.stringFromTextField1;
     Stringleton *goTime = [Stringleton secretGarden];
-    goTime.batonString = self.stringFromTextField1;
     NSString *tempString = goTime.batonString;
     NSLog(@"here's where I output a test version of stored singleton string");
     NSLog(@"and here is that string! %@", tempString);
@@ -130,6 +138,37 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    swipeToTheLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swiped:)];
+    swipeToTheLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [swipeLeftLabel addGestureRecognizer:swipeToTheLeft];
+    [super viewDidAppear:animated];
+}
+-(void)swiped:(UIGestureRecognizer*)recognizer
+{
+    Stringleton *goTime = [Stringleton secretGarden];
+    NSString *currentText = goTime.batonString;
+    NSString *dateString;
+    //NSString *prevList = secretLabel.text;
+    NSString *lineEnder = @"\n";
+    if (secretHolderOfDate == NULL){
+        NSDate *todaysDate = [NSDate date];
+        NSDateFormatter *dateFormatted = [[NSDateFormatter alloc]init];
+        [dateFormatted setDateStyle:NSDateFormatterFullStyle];
+        [dateFormatted setTimeStyle:NSDateFormatterFullStyle];
+        dateString = [dateFormatted stringFromDate:todaysDate];
+    }
+    NSMutableString *appendedStrings = [NSString stringWithFormat:@"%@ %@ %@ %@", currentText, secretHolderOfDate, eventTextField.text, lineEnder];
+    NSString *immutableString = [NSString stringWithString:appendedStrings];
+    goTime.batonString = immutableString;
+    ViewController2 *VC1 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    [self presentViewController:VC1 animated:YES completion:nil];
+    
+    
+}
+
+
 - (IBAction)appendAndPassToVC1:(id)sender {
     NSString *dateString;
     //NSString *prevList = secretLabel.text;
@@ -141,9 +180,15 @@
         [dateFormatted setTimeStyle:NSDateFormatterFullStyle];
         dateString = [dateFormatted stringFromDate:todaysDate];
     }
-    NSLog(@"%@", secretLabel.text);
+    
+    //NSLog(@"%@", secretLabel.text);
     NSMutableString *appendedStrings = [NSString stringWithFormat:@"%@ %@ %@ %@", self.stringFromTextField1, secretHolderOfDate, eventTextField.text, lineEnder];
     NSString *immutableString = [NSString stringWithString:appendedStrings];
+    Stringleton *baton = [Stringleton secretGarden];
+    baton.batonString = immutableString;
+    NSString *tempString = baton.batonString;
+    NSLog(@"here's where I output a test version of stored singleton string");
+    NSLog(@"and here is that string! %@", tempString);
     NSLog(@"Output %@", secretHolderOfDate);
     ViewController *VC1 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
     VC1.stringFromTextField2 = immutableString;
@@ -151,11 +196,9 @@
         
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    Stringleton *goTime = [Stringleton secretGarden];
-    goTime.batonString = self.stringFromTextField1;
-    NSString *tempString = goTime.batonString;
-    NSLog(@"here's where I output on clicking the 'hide keyboard' button");
-    NSLog(@"and here is that string again (for checking porpoises)! %@", tempString);
+    //NSString *tempString = goTime.batonString;
+    //NSLog(@"here's where I output on clicking the 'hide keyboard' button");
+    //NSLog(@"and here is that string again (for checking porpoises)! %@", tempString);
     return [textField resignFirstResponder];
 }
 - (void)pickerChanged:(id)sender
@@ -165,7 +208,7 @@
     [dateFormatted setTimeStyle:NSDateFormatterFullStyle];
     NSString *dateString = [dateFormatted stringFromDate:[sender date]];
     secretHolderOfDate = dateString;
-    NSLog(@"%@", secretHolderOfDate);
+    //NSLog(@"%@", secretHolderOfDate);
     
 }
 -(void)tappaTappa:(UIButton*)button{
@@ -174,9 +217,9 @@
             [self dismissViewControllerAnimated:YES completion:NULL];
         }
         if (button.tag == SAVEBUTTONTAG){
-            NSString *prevList = self.stringFromTextField1;
+            //NSString *prevList = self.stringFromTextField1;
             //NSString *lineEnder = @"\n";
-            NSLog(@"%@", prevList);
+            //NSLog(@"%@", prevList);
             //NSMutableString *appendedStrings = [NSString stringWithFormat:@"%@ %@ %@ %@", prevList, secretHolderOfDate, eventTextField.text, lineEnder];
             
              ViewController *VC1 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
