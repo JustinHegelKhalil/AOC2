@@ -19,17 +19,18 @@
 		AEBAE0C91729C3A4009D7C44 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEBAE0C71729C3A4009D7C44 /* MainStoryboard.storyboard */; };
 		AEBAE0CC1729C3A4009D7C44 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBAE0CB1729C3A4009D7C44 /* ViewController.m */; };
 		AEBAE0D41729C40F009D7C44 /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBAE0D31729C40F009D7C44 /* ViewController2.m */; };
+		AEBAE1081731C896009D7C44 /* Stringleton.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBAE1071731C896009D7C44 /* Stringleton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AEBAE0AC1729C3A4009D7C44 /* data passing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "data passing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEBAE0AC1729C3A4009D7C44 /* testApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEBAE0AF1729C3A4009D7C44 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AEBAE0B11729C3A4009D7C44 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AEBAE0B31729C3A4009D7C44 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		AEBAE0B71729C3A4009D7C44 /* data passing-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "data passing-Info.plist"; sourceTree = "<group>"; };
+		AEBAE0B71729C3A4009D7C44 /* testApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "testApp-Info.plist"; sourceTree = "<group>"; };
 		AEBAE0B91729C3A4009D7C44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AEBAE0BB1729C3A4009D7C44 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		AEBAE0BD1729C3A4009D7C44 /* data passing-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "data passing-Prefix.pch"; sourceTree = "<group>"; };
+		AEBAE0BD1729C3A4009D7C44 /* testApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "testApp-Prefix.pch"; sourceTree = "<group>"; };
 		AEBAE0BE1729C3A4009D7C44 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AEBAE0BF1729C3A4009D7C44 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		AEBAE0C11729C3A4009D7C44 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -40,6 +41,8 @@
 		AEBAE0CB1729C3A4009D7C44 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		AEBAE0D21729C40F009D7C44 /* ViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
 		AEBAE0D31729C40F009D7C44 /* ViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController2.m; sourceTree = "<group>"; };
+		AEBAE1061731C896009D7C44 /* Stringleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stringleton.h; sourceTree = "<group>"; };
+		AEBAE1071731C896009D7C44 /* Stringleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stringleton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +62,7 @@
 		AEBAE0A31729C3A4009D7C44 = {
 			isa = PBXGroup;
 			children = (
-				AEBAE0B51729C3A4009D7C44 /* data passing */,
+				AEBAE0B51729C3A4009D7C44 /* testApp */,
 				AEBAE0AE1729C3A4009D7C44 /* Frameworks */,
 				AEBAE0AD1729C3A4009D7C44 /* Products */,
 			);
@@ -68,7 +71,7 @@
 		AEBAE0AD1729C3A4009D7C44 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AEBAE0AC1729C3A4009D7C44 /* data passing.app */,
+				AEBAE0AC1729C3A4009D7C44 /* testApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,28 +86,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AEBAE0B51729C3A4009D7C44 /* data passing */ = {
+		AEBAE0B51729C3A4009D7C44 /* testApp */ = {
 			isa = PBXGroup;
 			children = (
 				AEBAE0BE1729C3A4009D7C44 /* AppDelegate.h */,
 				AEBAE0BF1729C3A4009D7C44 /* AppDelegate.m */,
 				AEBAE0D21729C40F009D7C44 /* ViewController2.h */,
+				AEBAE1061731C896009D7C44 /* Stringleton.h */,
+				AEBAE1071731C896009D7C44 /* Stringleton.m */,
 				AEBAE0D31729C40F009D7C44 /* ViewController2.m */,
 				AEBAE0C71729C3A4009D7C44 /* MainStoryboard.storyboard */,
 				AEBAE0CA1729C3A4009D7C44 /* ViewController.h */,
 				AEBAE0CB1729C3A4009D7C44 /* ViewController.m */,
 				AEBAE0B61729C3A4009D7C44 /* Supporting Files */,
 			);
+			name = testApp;
 			path = "data passing";
 			sourceTree = "<group>";
 		};
 		AEBAE0B61729C3A4009D7C44 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AEBAE0B71729C3A4009D7C44 /* data passing-Info.plist */,
+				AEBAE0B71729C3A4009D7C44 /* testApp-Info.plist */,
 				AEBAE0B81729C3A4009D7C44 /* InfoPlist.strings */,
 				AEBAE0BB1729C3A4009D7C44 /* main.m */,
-				AEBAE0BD1729C3A4009D7C44 /* data passing-Prefix.pch */,
+				AEBAE0BD1729C3A4009D7C44 /* testApp-Prefix.pch */,
 				AEBAE0C11729C3A4009D7C44 /* Default.png */,
 				AEBAE0C31729C3A4009D7C44 /* Default@2x.png */,
 				AEBAE0C51729C3A4009D7C44 /* Default-568h@2x.png */,
@@ -115,9 +121,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AEBAE0AB1729C3A4009D7C44 /* data passing */ = {
+		AEBAE0AB1729C3A4009D7C44 /* testApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AEBAE0CF1729C3A4009D7C44 /* Build configuration list for PBXNativeTarget "data passing" */;
+			buildConfigurationList = AEBAE0CF1729C3A4009D7C44 /* Build configuration list for PBXNativeTarget "testApp" */;
 			buildPhases = (
 				AEBAE0A81729C3A4009D7C44 /* Sources */,
 				AEBAE0A91729C3A4009D7C44 /* Frameworks */,
@@ -127,9 +133,9 @@
 			);
 			dependencies = (
 			);
-			name = "data passing";
+			name = testApp;
 			productName = "data passing";
-			productReference = AEBAE0AC1729C3A4009D7C44 /* data passing.app */;
+			productReference = AEBAE0AC1729C3A4009D7C44 /* testApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -141,7 +147,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Justin Khalil";
 			};
-			buildConfigurationList = AEBAE0A71729C3A4009D7C44 /* Build configuration list for PBXProject "data passing" */;
+			buildConfigurationList = AEBAE0A71729C3A4009D7C44 /* Build configuration list for PBXProject "testApp" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -153,7 +159,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AEBAE0AB1729C3A4009D7C44 /* data passing */,
+				AEBAE0AB1729C3A4009D7C44 /* testApp */,
 			);
 		};
 /* End PBXProject section */
@@ -182,6 +188,7 @@
 				AEBAE0C01729C3A4009D7C44 /* AppDelegate.m in Sources */,
 				AEBAE0CC1729C3A4009D7C44 /* ViewController.m in Sources */,
 				AEBAE0D41729C40F009D7C44 /* ViewController2.m in Sources */,
+				AEBAE1081731C896009D7C44 /* Stringleton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,9 +274,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "data passing/data passing-Prefix.pch";
-				INFOPLIST_FILE = "data passing/data passing-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "data passing/testApp-Prefix.pch";
+				INFOPLIST_FILE = "data passing/testApp-Info.plist";
+				PRODUCT_NAME = testApp;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -278,9 +285,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "data passing/data passing-Prefix.pch";
-				INFOPLIST_FILE = "data passing/data passing-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "data passing/testApp-Prefix.pch";
+				INFOPLIST_FILE = "data passing/testApp-Info.plist";
+				PRODUCT_NAME = testApp;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -288,7 +295,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AEBAE0A71729C3A4009D7C44 /* Build configuration list for PBXProject "data passing" */ = {
+		AEBAE0A71729C3A4009D7C44 /* Build configuration list for PBXProject "testApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AEBAE0CD1729C3A4009D7C44 /* Debug */,
@@ -297,13 +304,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AEBAE0CF1729C3A4009D7C44 /* Build configuration list for PBXNativeTarget "data passing" */ = {
+		AEBAE0CF1729C3A4009D7C44 /* Build configuration list for PBXNativeTarget "testApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AEBAE0D01729C3A4009D7C44 /* Debug */,
 				AEBAE0D11729C3A4009D7C44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

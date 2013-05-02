@@ -73,6 +73,9 @@
     if (self.stringFromTextField2 != NULL){
         textView.text = self.stringFromTextField2;
         firstTextField.text = self.stringFromTextField2;
+        NSString *tempString = [Stringleton secretGarden].batonString;
+        NSLog(@"Now, I output the same string from a different source, making sure that it's still the same one.");
+        NSLog(@"and here is that string again (for checking porpoises)! %@", tempString);
     }
   
  

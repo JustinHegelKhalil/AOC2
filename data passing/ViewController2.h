@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Stringleton.h"
 
 @interface ViewController2 : UIViewController<UITextFieldDelegate>
 {
+    NSString *batonString;
     NSString *secretHolderOfDate;
     UILabel *secretLabel;
     UIButton *backButton;
@@ -21,6 +23,7 @@
     UIButton *addEventButton;
 }
 
+@property (strong, nonatomic)NSString *stringletonString;
 @property (weak, nonatomic) IBOutlet UILabel *displayLabel2;
 -(void)tappaTappa:(UIButton*)button;
 @property (strong, nonatomic) IBOutlet UITextField *eventTextField;

@@ -12,12 +12,14 @@
 #define CLOSEKEYBOARDBUTTONTAG 1
 #define SAVEBUTTONTAG 2
 
-@interface ViewController2 ()
+@interface ViewController2 () {
+    NSString *stringletonString;
+}
 
 @end
 
 @implementation ViewController2
-
+@synthesize stringletonString = _stringletonString;
 @synthesize eventTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -104,6 +106,12 @@
     self.eventTextField.delegate = self;
     
     self.displayLabel2.text = self.stringFromTextField1;
+    stringletonString = self.stringFromTextField1;
+    Stringleton *goTime = [Stringleton secretGarden];
+    goTime.batonString = self.stringFromTextField1;
+    NSString *tempString = goTime.batonString;
+    NSLog(@"here's where I output a test version of stored singleton string");
+    NSLog(@"and here is that string! %@", tempString);
 	// Do any additional setup after loading the view.
     CGRect pickerFrame = CGRectMake(0,250,0,0);
     
@@ -143,6 +151,11 @@
         
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    Stringleton *goTime = [Stringleton secretGarden];
+    goTime.batonString = self.stringFromTextField1;
+    NSString *tempString = goTime.batonString;
+    NSLog(@"here's where I output on clicking the 'hide keyboard' button");
+    NSLog(@"and here is that string again (for checking porpoises)! %@", tempString);
     return [textField resignFirstResponder];
 }
 - (void)pickerChanged:(id)sender
