@@ -157,10 +157,9 @@
 
 
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    //NSString *tempString = goTime.batonString;
-    //NSLog(@"here's where I output on clicking the 'hide keyboard' button");
-    //NSLog(@"and here is that string again (for checking porpoises)! %@", tempString);
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    // So I still need this thing. Hides keyboard on enter/return
     return [textField resignFirstResponder];
 }
 - (void)pickerChanged:(id)sender

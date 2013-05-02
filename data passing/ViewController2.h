@@ -20,14 +20,13 @@
     UIButton *closeKeyboardButton;
     UILabel *eventTextLabel;
     UILabel *setTimeAndDate;
-    UILabel *buttonBG;
-    UIButton *addEventButton;
+    //UIButton *addEventButton;
 }
 
 @property (strong, nonatomic)NSString *singletonString;
 @property (weak, nonatomic) IBOutlet UILabel *displayLabel2;
 -(void)tappaTappa:(UIButton*)button;
 @property (strong, nonatomic)UITextField *eventTextField;
-- (IBAction)appendAndPassToVC1:(id)sender;
-@property (strong, nonatomic) NSString *stringFromTextField1;
+//- (IBAction)appendAndPassToVC1:(id)sender;
+//@property (strong, nonatomic) NSString *stringFromTextField1;
 @end

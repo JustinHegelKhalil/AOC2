@@ -73,7 +73,7 @@
         textView.text = content;
     }
     
-    // swipe label here
+    // swipe label here, make it interactable and...
     swipeRightLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 400.0f, 320.0f, 50.0f)];
     swipeRightLabel.text = @"Swipe right to add event";
     swipeRightLabel.backgroundColor = [UIColor orangeColor];
@@ -88,6 +88,7 @@
         saveButton.tag = SAVETAG;
         NSString *saveString = @"Save";
         [saveButton setTitle:saveString forState:UIControlStateNormal];
+        //connect it to the gesture recognizer.
         [saveButton addTarget:self action:@selector(tappaTappa:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:saveButton];
     }
@@ -123,6 +124,7 @@
 }
 -(void)swiped:(UIGestureRecognizer*)recognizer
 {
+    // gesture recognizer... pass data to singleton stuff
     ViewController2 *VC2 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController2"];
     [self presentViewController:VC2 animated:YES completion:nil];
     Stringleton *baton = [Stringleton secretGarden];
@@ -137,7 +139,7 @@
 -(void)tappaTappa:(UIButton*)button{
     if (button != nil){
         if (button.tag == SAVETAG){
-            //// PUT SAVE CONTENT STUFF HERE
+            //// Save to NSUserDefaults with key of "savedDates"
             NSString *savableDates = textView.text;
             NSUserDefaults *defaultStuff = [NSUserDefaults standardUserDefaults];
             [defaultStuff setObject:savableDates forKey:@"savedDates"];
